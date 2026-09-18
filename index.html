@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Shamrock Favicon for Browser Tabs -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23008744'/><path d='M50 25 C40 25 32 35 32 45 C32 55 42 62 50 62 C58 62 68 55 68 45 C68 35 60 25 50 25 Z' fill='%23ffffff'/><path d='M50 62 C40 62 30 72 38 82 C46 92 54 80 50 62 Z' fill='%23ffffff'/><path d='M50 62 C60 62 70 72 62 82 C54 92 46 80 50 62 Z' fill='%23ffffff'/><path d='M47 62 L43 88 L53 88 L49 62 Z' fill='%23ffffff'/></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23008744'/><path d='M50 20 C40 20 32 30 32 40 C32 50 42 58 50 58 C58 58 68 50 68 40 C68 30 60 20 50 20 Z' fill='%23ffffff'/><path d='M50 58 C38 58 26 68 34 80 C42 92 52 80 50 58 Z' fill='%23ffffff'/><path d='M50 58 C62 58 74 68 66 80 C58 92 48 80 50 58 Z' fill='%23ffffff'/><path d='M47 58 L43 88 L53 88 L49 58 Z' fill='%23ffffff'/></svg>">
 
   <!-- SEO Optimization Meta Tags -->
   <title>PAO Zone | Πρόγραμμα Παναθηναϊκού FC & BC, Κανάλι Μετάδοσης & Live Αγώνες</title>
@@ -29,7 +29,7 @@
       --pao-emerald: #10b981;
       --pao-dark-green: #004d25;
       --pao-black: #080f0b;
-      --pao-card-bg: rgba(18, 30, 23, 0.8);
+      --pao-card-bg: rgba(18, 30, 23, 0.85);
       --pao-border: rgba(16, 185, 129, 0.2);
       --pao-border-hover: rgba(16, 185, 129, 0.5);
       --text-main: #f3f4f6;
@@ -82,14 +82,11 @@
     }
 
     .brand-logo-wrap {
-      width: 42px;
-      height: 42px;
-      background: var(--pao-green);
-      border-radius: 12px;
+      width: 44px;
+      height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 15px rgba(0, 135, 68, 0.5);
     }
 
     .brand-title {
@@ -217,15 +214,11 @@
     }
 
     .hero-badge-wrap {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: rgba(0, 135, 68, 0.2);
+      width: 88px;
+      height: 88px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid var(--pao-border);
-      padding: 12px;
     }
 
     .hero-team-name {
@@ -349,11 +342,12 @@
       font-size: 15px;
     }
 
-    .team-icon-svg {
-      width: 24px;
-      height: 24px;
-      display: inline-block;
-      vertical-align: middle;
+    .card-crest-wrap {
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .tv-badge {
@@ -400,13 +394,71 @@
 </head>
 <body>
 
-  <!-- Clean Shamrock Vector Templates -->
-  <template id="shamrock-svg">
-    <svg class="team-icon-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50 18 C38 18 28 30 28 42 C28 54 40 62 50 62 C60 62 72 54 72 42 C72 30 62 18 50 18 Z" fill="#10b981"/>
-      <path d="M50 62 C38 62 26 74 35 86 C44 98 54 84 50 62 Z" fill="#10b981"/>
-      <path d="M50 62 C62 62 74 74 65 86 C56 98 46 84 50 62 Z" fill="#10b981"/>
-      <path d="M47 62 L42 92 L52 92 L49 62 Z" fill="#008744"/>
+  <!-- Reusable Official Vector Crest Templates -->
+  <template id="pao-fc-crest">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%;">
+      <!-- Outer Double Green Border -->
+      <circle cx="100" cy="100" r="95" fill="none" stroke="#008744" stroke-width="6"/>
+      <circle cx="100" cy="100" r="82" fill="none" stroke="#008744" stroke-width="3"/>
+      
+      <!-- Text Arc Path -->
+      <path id="textPathTop" d="M 28,100 A 72,72 0 1,1 172,100" fill="none"/>
+      <text fill="#008744" font-family="'Inter', sans-serif" font-weight="900" font-size="19" letter-spacing="2.5">
+        <textPath href="#textPathTop" startOffset="50%" text-anchor="middle">ΠΑΝΑΘΗΝΑΪΚΟΣ</textPath>
+      </text>
+
+      <!-- Side Stars -->
+      <polygon points="42,132 45,142 35,136 46,136 38,142" fill="#008744" transform="scale(1.2) translate(-8, -18)"/>
+      <polygon points="142,132 145,142 135,136 146,136 138,142" fill="#008744" transform="scale(1.2) translate(-22, -18)"/>
+
+      <!-- Bottom Year 1908 -->
+      <text x="100" y="174" fill="#008744" font-family="'Inter', sans-serif" font-weight="900" font-size="22" letter-spacing="1" text-anchor="middle">1908</text>
+
+      <!-- Center Shamrock -->
+      <g transform="translate(100, 96) scale(0.95)">
+        <path d="M 0,-36 C -18,-36 -28,-18 -28,-4 C -28,10 -12,20 0,20 C 12,20 28,10 28,-4 C 28,-18 18,-36 0,-36 Z" fill="#008744"/>
+        <path d="M 0,20 C -18,20 -34,34 -24,50 C -14,66 4,48 0,20 Z" fill="#008744"/>
+        <path d="M 0,20 C 18,20 34,34 24,50 C 14,66 -4,48 0,20 Z" fill="#008744"/>
+        <path d="M -4,20 L -6,52 L 6,52 L 4,20 Z" fill="#008744"/>
+      </g>
+    </svg>
+  </template>
+
+  <template id="pao-bc-crest">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%;">
+      <!-- 7 EuroLeague Gold Stars Arc -->
+      <g fill="#f59e0b">
+        <polygon points="42,50 45,57 52,57 46,62 48,69 42,65 36,69 38,62 32,57 39,57" transform="rotate(-30 42 50)"/>
+        <polygon points="60,35 63,42 70,42 64,47 66,54 60,50 54,54 56,47 50,42 57,42" transform="rotate(-20 60 35)"/>
+        <polygon points="80,25 83,32 90,32 84,37 86,44 80,40 74,44 76,37 70,32 77,32" transform="rotate(-10 80 25)"/>
+        <polygon points="100,20 103,27 110,27 104,32 106,39 100,35 94,39 96,32 90,27 97,27"/>
+        <polygon points="120,25 123,32 130,32 124,37 126,44 120,40 114,44 116,37 110,32 117,32" transform="rotate(10 120 25)"/>
+        <polygon points="140,35 143,42 150,42 144,47 146,54 140,50 134,54 136,47 130,42 137,42" transform="rotate(20 140 35)"/>
+        <polygon points="158,50 161,57 168,57 162,62 164,69 158,65 152,69 154,62 148,57 155,57" transform="rotate(30 158 50)"/>
+      </g>
+
+      <!-- Basketball Circle -->
+      <circle cx="100" cy="112" r="62" fill="#e87a28" stroke="#1c1917" stroke-width="3"/>
+      <path d="M 38,112 A 62,62 0 0,0 162,112" fill="none" stroke="#1c1917" stroke-width="2.5"/>
+      <path d="M 100,50 L 100,174" fill="none" stroke="#1c1917" stroke-width="2.5"/>
+      <path d="M 52,72 C 78,92 78,132 52,152" fill="none" stroke="#1c1917" stroke-width="2.5"/>
+      <path d="M 148,72 C 122,92 122,132 148,152" fill="none" stroke="#1c1917" stroke-width="2.5"/>
+
+      <!-- Inner Green Shamrock Shield -->
+      <g transform="translate(100, 102) scale(0.68)">
+        <path d="M 0,-24 C -12,-24 -20,-12 -20,0 C -20,10 -8,18 0,18 C 8,18 20,10 20,0 C 20,-12 12,-24 0,-24 Z" fill="#008744"/>
+        <path d="M 0,18 C -14,18 -26,28 -18,40 C -10,52 2,38 0,18 Z" fill="#008744"/>
+        <path d="M 0,18 C 14,18 26,28 18,40 C 10,52 -2,38 0,18 Z" fill="#008744"/>
+        <path d="M -3,18 L -4,44 L 4,44 L 3,18 Z" fill="#008744"/>
+        
+        <!-- Letters Π A O inside Shamrock -->
+        <text x="-12" y="10" fill="#ffffff" font-family="'Inter', sans-serif" font-weight="900" font-size="10">Π</text>
+        <text x="0" y="-8" fill="#ffffff" font-family="'Inter', sans-serif" font-weight="900" font-size="10" text-anchor="middle">Α</text>
+        <text x="12" y="10" fill="#ffffff" font-family="'Inter', sans-serif" font-weight="900" font-size="10" text-anchor="end">Ο</text>
+      </g>
+
+      <!-- 1908 on Basketball -->
+      <text x="100" y="156" fill="#008744" font-family="'Inter', sans-serif" font-weight="900" font-size="13" text-anchor="middle">1908</text>
     </svg>
   </template>
 
@@ -470,7 +522,7 @@
 
         <div class="hero-team">
           <div class="hero-badge-wrap">
-            <span style="font-size: 32px;">🏀</span>
+            <span style="font-size: 40px;">🏀</span>
           </div>
           <div class="hero-team-name">JL Bourg-en-Bresse</div>
         </div>
@@ -570,8 +622,9 @@
     let currentStatus = 'UPCOMING';
     let searchQuery = '';
 
-    function getShamrockSVG() {
-      const tmpl = document.getElementById('shamrock-svg');
+    function getCrestSVG(type) {
+      const tmplId = type === 'BC' ? 'pao-bc-crest' : 'pao-fc-crest';
+      const tmpl = document.getElementById(tmplId);
       return tmpl.content.cloneNode(true);
     }
 
@@ -587,8 +640,8 @@
     }
 
     function renderHero() {
-      document.getElementById('headerLogo').appendChild(getShamrockSVG());
-      document.getElementById('heroPaoBadge').appendChild(getShamrockSVG());
+      document.getElementById('headerLogo').appendChild(getCrestSVG('BC'));
+      document.getElementById('heroPaoBadge').appendChild(getCrestSVG('BC'));
 
       const gamedayMatch = matchesData.find(m => m.id === 1);
       if (gamedayMatch) {
@@ -658,11 +711,13 @@
         const awayTeam = m.home ? m.opponent : paoTitle;
 
         const homeIconContainer = document.createElement('span');
-        if (m.home) homeIconContainer.appendChild(getShamrockSVG());
+        homeIconContainer.className = 'card-crest-wrap';
+        if (m.home) homeIconContainer.appendChild(getCrestSVG(m.team));
         else homeIconContainer.innerHTML = '🛡️';
 
         const awayIconContainer = document.createElement('span');
-        if (!m.home) awayIconContainer.appendChild(getShamrockSVG());
+        awayIconContainer.className = 'card-crest-wrap';
+        if (!m.home) awayIconContainer.appendChild(getCrestSVG(m.team));
         else awayIconContainer.innerHTML = '🛡️';
 
         card.innerHTML = `
