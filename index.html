@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panathinaikos FC & BC Match Schedule & TV Hub</title>
+    <style>
+        :root {
+            --pao-green: #007A3d;
+            --pao-darkgreen: #004D25;
+            --pao-lightgreen: #00FF66;
+            --pao-gold: #FFD700;
+            --pao-darkbg: #070D09;
+            --pao-cardbg: #101912;
+            --pao-cardhover: #16241a;
+            --pao-border: #1B2E21;
+            --pao-text: #E5E7EB;
+            --pao-muted: #9CA3AF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--pao-darkbg);
+            color: var(--pao-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            background-color: rgba(16, 25, 18, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--pao-border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.85rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 900;
+            font-size: 1.25rem;
+            letter-spacing: 0.5px;
+        }
+
+        .clover-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--pao-green), var(--pao-lightgreen));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--pao-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--pao-lightgreen);
+        }
+
+        /* MAIN CONTAINER */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.25rem;
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        /* SECTION HEADERS */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: var(--pao-muted);
+        }
+
+        /* TODAY'S GAMEDAY HERO BANNER */
+        .gameday-banner {
+            background: linear-gradient(135deg, rgba(0, 77, 37, 0.9) 0%, rgba(16, 25, 18, 0.95) 100%);
+            border: 2px solid var(--pao-lightgreen);
+            border-radius: 20px;
+            padding: 1.75rem;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.25);
+            overflow: hidden;
+        }
+
+        .gameday-badge-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .pulse-gameday-tag {
+            background: #ef4444;
+            color: white;
+            font-weight: 900;
+            font-size: 0.8rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: pulse-animation 1.8s infinite;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+
+        .badge {
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-fc {
+            background: rgba(0, 122, 61, 0.3);
+            color: var(--pao-lightgreen);
+            border: 1px solid var(--pao-green);
+        }
+
+        .badge-bc {
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--pao-gold);
+            border: 1px solid rgba(255, 215, 0, 0.5);
+        }
+
+        .badge-friendly {
+            background: rgba(234, 179, 8, 0.25);
+            color: #fde047;
+            border: 1px solid rgba(234, 179, 8, 0.5);
+        }
+
+        .badge-comp {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--pao-text);
+            border: 1px solid var(--pao-border);
+        }
+
+        .gameday-match-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin: 1.5rem 0;
+            text-align: center;
+            gap: 1rem;
+        }
+
+        .team-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+        }
+
+        .team-avatar {
+            width: 68px;
+            height: 68px;
+            border-radius: 16px;
+            background: var(--pao-darkbg);
+            border: 2px solid var(--pao-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: white;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+        }
+
+        .team-avatar-pao {
+            border-color: var(--pao-lightgreen);
+            background: radial-gradient(circle, var(--pao-darkgreen) 0%, var(--pao-darkbg) 100%);
+        }
+
+        .team-name {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .team-role {
+            font-size: 0.7rem;
+            color: var(--pao-muted);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .vs-divider {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--pao-gold);
+            font-style: italic;
+        }
+
+        /* PROMINENT TV BROADCAST BOX */
+        .tv-highlight-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--pao-border);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .tv-channel-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #0284c7;
+            color: white;
+            border: 1px solid #38bdf8;
+            padding: 0.4rem 1rem;
+            border-radius: 10px;
+            font-weight: 900;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+        }
+
+        .tv-channel-badge-gold {
+            background: #ca8a04;
+            color: black;
+            border-color: #fde047;
+            box-shadow: 0 4px 12px rgba(202, 138, 4, 0.4);
+        }
+
+        .match-venue-time {
+            font-size: 0.85rem;
+            color: var(--pao-text);
+            font-weight: 600;
+        }
+
+        /* TIMER GRID */
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            max-width: 480px;
+            margin: 1.25rem auto 0;
+            text-align: center;
+        }
+
+        .timer-unit {
+            background: var(--pao-darkbg);
+            border: 1px solid var(--pao-border);
+            padding: 0.6rem 0.4rem;
+            border-radius: 10px;
+        }
+
+        .timer-num {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: white;
+            display: block;
+            line-height: 1.1;
+        }
+
+        .timer-label {
+            font-size: 0.65rem;
+            color: var(--pao-muted);
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .action-btn {
+            background: var(--pao-green);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 0.7rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 800;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .action-btn:hover {
+            background: var(--pao-lightgreen);
+            color: var(--pao-darkbg);
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+        }
+
+        /* FILTER CONTROLS BAR */
+        .controls-card {
+            background: var(--pao-cardbg);
+            border: 1px solid var(--pao-border);
+            border-radius: 16px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pill-group {
+            display: flex;
+            background: var(--pao-darkbg);
+            padding: 0.25rem;
+            border-radius: 10px;
+            border: 1px solid var(--pao-border);
+            gap: 0.25rem;
+        }
+
+        .pill-btn {
+            background: transparent;
+            border: none;
+            color: var(--pao-muted);
+            padding: 0.45rem 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 800;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pill-btn.active {
+            background: var(--pao-green);
+            color: white;
+        }
+
+        .pill-btn-gold.active {
+            background: var(--pao-gold);
+            color: black;
+        }
+
+        .search-box {
+            background: var(--pao-darkbg);
+            border: 1px solid var(--pao-border);
+            border-radius: 10px;
+            padding: 0.55rem 1rem;
+            color: white;
+            font-size: 0.85rem;
+            width: 100%;
+            max-width: 320px;
+            outline: none;
+        }
+
+        .search-box:focus {
+            border-color: var(--pao-lightgreen);
+        }
+
+        /* MATCH CARDS GRID */
+        .matches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.35rem;
+        }
+
+        .match-card {
+            background: var(--pao-cardbg);
+            border: 1px solid var(--pao-border);
+            border-radius: 16px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1rem;
+            transition: transform 0.2s, border-color 0.2s;
+            position: relative;
+        }
+
+        .match-card.is-today-card {
+            border: 2px solid var(--pao-lightgreen);
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
+        }
+
+        .match-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--pao-lightgreen);
+            background: var(--pao-cardhover);
+        }
+
+        .match-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .score-display {
+            background: var(--pao-darkbg);
+            border: 1px solid var(--pao-border);
+            padding: 0.4rem 0.85rem;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--pao-lightgreen);
+            letter-spacing: 1px;
+        }
+
+        /* STANDINGS SECTION */
+        .standings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .table-card {
+            background: var(--pao-cardbg);
+            border: 1px solid var(--pao-border);
+            border-radius: 16px;
+            padding: 1.25rem;
+            overflow-x: auto;
+        }
+
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.85rem;
+            margin-top: 0.75rem;
+        }
+
+        .custom-table th {
+            color: var(--pao-muted);
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            padding: 0.65rem;
+            border-bottom: 1px solid var(--pao-border);
+        }
+
+        .custom-table td {
+            padding: 0.7rem 0.65rem;
+            border-bottom: 1px solid rgba(27, 46, 33, 0.5);
+        }
+
+        .custom-table tr.highlight-pao {
+            background: rgba(0, 122, 61, 0.25);
+            font-weight: 800;
+            color: white;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3.5rem 1rem;
+            background: var(--pao-cardbg);
+            border: 1px solid var(--pao-border);
+            border-radius: 16px;
+            color: var(--pao-muted);
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--pao-border);
+            background: var(--pao-cardbg);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--pao-muted);
+            margin-top: auto;
+        }
+
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .search-box { max-width: 100%; }
+            .filter-row { flex-direction: column; align-items: stretch; }
+            .pill-group { justify-content: center; }
+            .gameday-match-wrapper { flex-direction: column; gap: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <div class="clover-icon">☘</div>
+                <span>PAO MATCH CENTER</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#gameday-section">Today's Game</a></li>
+                <li><a href="#matches-section">Schedule & TV Guide</a></li>
+                <li><a href="#standings-section">Standings</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- TODAY'S GAMEDAY HERO SECTION -->
+        <section id="gameday-section">
+            <div class="gameday-banner">
+                <div class="gameday-badge-top">
+                    <span class="pulse-gameday-tag">🚨 GAMEDAY • TODAY (SEP 18, 2026)</span>
+                    <div>
+                        <span class="badge badge-bc">🏀 PAO BC AKTOR</span>
+                        <span class="badge badge-friendly">8th Pavlos Giannakopoulos Tournament</span>
+                    </div>
+                </div>
+
+                <div class="gameday-match-wrapper">
+                    <div class="team-box">
+                        <div class="team-avatar team-avatar-pao">☘</div>
+                        <span class="team-name">Panathinaikos AKTOR</span>
+                        <span class="team-role">HOME</span>
+                    </div>
+                    
+                    <div class="vs-divider">VS</div>
+
+                    <div class="team-box">
+                        <div class="team-avatar" style="border-color: #ef4444; background: #450a0a;">JLB</div>
+                        <span class="team-name">JL Bourg-en-Bresse</span>
+                        <span class="team-role">AWAY</span>
+                    </div>
+                </div>
+
+                <div class="tv-highlight-box">
+                    <span class="tv-channel-badge tv-channel-badge-gold">📺 SKAI TV / ERTFLIX</span>
+                    <div class="match-venue-time">Tonight at 21:15 EEST</div>
+                    <div class="match-venue-time">📍 Panathenaic Stadium (Kallimarmaro Outdoor Arena)</div>
+                </div>
+
+                <div class="timer-grid">
+                    <div class="timer-unit"><span id="hero-d" class="timer-num">00</span><span class="timer-label">Days</span></div>
+                    <div class="timer-unit"><span id="hero-h" class="timer-num">00</span><span class="timer-label">Hours</span></div>
+                    <div class="timer-unit"><span id="hero-m" class="timer-num">00</span><span class="timer-label">Mins</span></div>
+                    <div class="timer-unit"><span id="hero-s" class="timer-num" style="color: var(--pao-lightgreen);">00</span><span class="timer-label">Secs</span></div>
+                </div>
+
+                <div style="max-width: 320px; margin: 1.25rem auto 0;">
+                    <button onclick="addCalEvent('bc-today-1')" class="action-btn">📅 Add Today's Game to Calendar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- MATCH SCHEDULE & TV GUIDE SECTION -->
+        <section id="matches-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">📅 Match Schedule & TV Guide</h2>
+                    <p class="section-subtitle">Chronological order • Soonest matches first</p>
+                </div>
+            </div>
+
+            <div class="controls-card">
+                <div class="filter-row">
+                    <!-- Team Filter -->
+                    <div class="pill-group">
+                        <button id="btn-team-ALL" onclick="setFilter('team', 'ALL')" class="pill-btn active">All Teams</button>
+                        <button id="btn-team-FC" onclick="setFilter('team', 'FC')" class="pill-btn">⚽ PAO FC</button>
+                        <button id="btn-team-BC" onclick="setFilter('team', 'BC')" class="pill-btn">🏀 PAO BC</button>
+                    </div>
+
+                    <!-- Type Filter -->
+                    <div class="pill-group">
+                        <button id="btn-type-ALL" onclick="setFilter('type', 'ALL')" class="pill-btn active">All Games</button>
+                        <button id="btn-type-OFFICIAL" onclick="setFilter('type', 'OFFICIAL')" class="pill-btn">Official</button>
+                        <button id="btn-type-FRIENDLY" onclick="setFilter('type', 'FRIENDLY')" class="pill-btn pill-btn-gold">🤝 Friendlies</button>
+                    </div>
+
+                    <!-- Status Filter -->
+                    <div class="pill-group">
+                        <button id="btn-status-UPCOMING" onclick="setFilter('status', 'UPCOMING')" class="pill-btn active">Upcoming</button>
+                        <button id="btn-status-RECENT" onclick="setFilter('status', 'RECENT')" class="pill-btn">Results</button>
+                        <button id="btn-status-ALL" onclick="setFilter('status', 'ALL')" class="pill-btn">Full Schedule</button>
+                    </div>
+                </div>
+
+                <div class="filter-row">
+                    <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search opponent, venue or TV broadcast..." class="search-box">
+                </div>
+            </div>
+
+            <div id="matchesContainer" class="matches-grid" style="margin-top: 1.5rem;">
+                <!-- Dynamically populated via Vanilla JS -->
+            </div>
+        </section>
+
+        <!-- STANDINGS SECTION -->
+        <section id="standings-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">🏆 League Standings</h2>
+                    <p class="section-subtitle">Super League Greece & EuroLeague Regular Season</p>
+                </div>
+            </div>
+
+            <div class="standings-grid">
+                <!-- Football Table -->
+                <div class="table-card">
+                    <h3 style="color: white; font-size: 1.05rem; display: flex; align-items: center; gap: 0.5rem;">⚽ Super League Greece</h3>
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Club</th>
+                                <th>P</th>
+                                <th>W-D-L</th>
+                                <th>Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="highlight-pao">
+                                <td>1</td>
+                                <td>☘ Panathinaikos FC</td>
+                                <td>3</td>
+                                <td>3-0-0</td>
+                                <td>9</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>AEK Athens</td>
+                                <td>3</td>
+                                <td>2-1-0</td>
+                                <td>7</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Olympiacos FC</td>
+                                <td>3</td>
+                                <td>2-0-1</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>PAOK FC</td>
+                                <td>3</td>
+                                <td>1-1-1</td>
+                                <td>4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Basketball Table -->
+                <div class="table-card">
+                    <h3 style="color: white; font-size: 1.05rem; display: flex; align-items: center; gap: 0.5rem;">🏀 EuroLeague Basketball</h3>
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Club</th>
+                                <th>GP</th>
+                                <th>W-L</th>
+                                <th>Pct</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="highlight-pao">
+                                <td>1</td>
+                                <td>☘ Panathinaikos AKTOR</td>
+                                <td>0</td>
+                                <td>0-0</td>
+                                <td>.000</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Real Madrid</td>
+                                <td>0</td>
+                                <td>0-0</td>
+                                <td>.000</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Fenerbahce Beko</td>
+                                <td>0</td>
+                                <td>0-0</td>
+                                <td>.000</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Olympiacos BC</td>
+                                <td>0</td>
+                                <td>0-0</td>
+                                <td>.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        ☘ Panathinaikos Fan Match Center & Live TV Broadcast Hub • Updated Sep 18, 2026
+    </footer>
+
+    <script>
+        // Database of Matches strictly ordered chronologically
+        const matchesData = [
+            // UPCOMING MATCHES (CHRONOLOGICAL ORDER - SOONEST FIRST)
+            {
+                id: 'bc-today-1',
+                team: 'BC',
+                isFriendly: true,
+                isToday: true,
+                status: 'UPCOMING',
+                dateStr: '2026-09-18T21:15:00',
+                displayDate: 'TODAY • Sep 18, 2026',
+                displayTime: '21:15 EEST',
+                competition: '8th Pavlos Giannakopoulos Tournament',
+                tvChannel: 'SKAI TV / ERTFLIX',
+                tvColorClass: 'tv-channel-badge-gold',
+                opponent: 'JL Bourg-en-Bresse',
+                oppInitials: 'JLB',
+                oppColor: 'background: #450a0a; border-color: #ef4444;',
+                isHome: true,
+                venue: 'Panathenaic Stadium (Kallimarmaro Outdoor Arena)'
+            },
+            {
+                id: 'bc-up-1',
+                team: 'BC',
+                isFriendly: true,
+                isToday: false,
+                status: 'UPCOMING',
+                dateStr: '2026-09-19T20:00:00',
+                displayDate: 'Saturday, Sep 19, 2026',
+                displayTime: '20:00 EEST',
+                competition: 'Pavlos Giannakopoulos Tournament (Final / 3rd Place)',
+                tvChannel: 'SKAI TV / ERTFLIX',
+                tvColorClass: 'tv-channel-badge-gold',
+                opponent: 'Partizan / Efes',
+                oppInitials: 'PAR',
+                oppColor: 'background: #27272a; border-color: #a1a1aa;',
+                isHome: true,
+                venue: 'Panathenaic Stadium (Kallimarmaro Outdoor Arena)'
+            },
+            {
+                id: 'fc-up-1',
+                team: 'FC',
+                isFriendly: false,
+                isToday: false,
+                status: 'UPCOMING',
+                dateStr: '2026-09-20T19:30:00',
+                displayDate: 'Sunday, Sep 20, 2026',
+                displayTime: '19:30 EEST',
+                competition: 'Super League Greece',
+                tvChannel: 'Cosmote Sport 1 HD',
+                tvColorClass: '',
+                opponent: 'Kalamata FC',
+                oppInitials: 'KAL',
+                oppColor: 'background: #18181b; border-color: #f59e0b;',
+                isHome: false,
+                venue: 'Kalamata Municipal Stadium'
+            },
+            {
+                id: 'bc-up-2',
+                team: 'BC',
+                isFriendly: false,
+                isToday: false,
+                status: 'UPCOMING',
+                dateStr: '2026-09-24T21:15:00',
+                displayDate: 'Thursday, Sep 24, 2026',
+                displayTime: '21:15 EEST',
+                competition: 'EuroLeague Round 1',
+                tvChannel: 'NovaSports Prime',
+                tvColorClass: 'tv-channel-badge-gold',
+                opponent: 'Paris Basketball',
+                oppInitials: 'PAR',
+                oppColor: 'background: #1e3a8a; border-color: #60a5fa;',
+                isHome: true,
+                venue: 'OAKA Altion Arena'
+            },
+            {
+                id: 'bc-up-3',
+                team: 'BC',
+                isFriendly: false,
+                isToday: false,
+                status: 'UPCOMING',
+                dateStr: '2026-09-30T21:15:00',
+                displayDate: 'Wednesday, Sep 30, 2026',
+                displayTime: '21:15 EEST',
+                competition: 'EuroLeague Round 2',
+                tvChannel: 'NovaSports 4 HD',
+                tvColorClass: 'tv-channel-badge-gold',
+                opponent: 'LDLC ASVEL',
+                oppInitials: 'ASV',
+                oppColor: 'background: #18181b; border-color: #e4e4e7;',
+                isHome: true,
+                venue: 'OAKA Altion Arena'
+            },
+            {
+                id: 'fc-up-2',
+                team: 'FC',
+                isFriendly: false,
+                isToday: false,
+                status: 'UPCOMING',
+                dateStr: '2026-10-11T20:30:00',
+                displayDate: 'Sunday, Oct 11, 2026',
+                displayTime: '20:30 EEST',
+                competition: 'Super League (Derby of Eternal Enemies)',
+                tvChannel: 'Cosmote Sport 1 HD',
+                tvColorClass: '',
+                opponent: 'Olympiacos FC',
+                oppInitials: 'OLY',
+                oppColor: 'background: #7f1d1d; border-color: #f87171;',
+                isHome: false,
+                venue: 'Karaiskakis Stadium'
+            },
+            {
+                id: 'fc-up-3',
+                team: 'FC',
+                isFriendly: false,
+                isToday: false,
+                status: 'UPCOMING',
+                dateStr: '2026-10-15T19:45:00',
+                displayDate: 'Thursday, Oct 15, 2026',
+                displayTime: '19:45 EEST',
+                competition: 'UEFA Conference League',
+                tvChannel: 'Cosmote Sport 2 HD',
+                tvColorClass: '',
+                opponent: 'Borac Banja Luka',
+                oppInitials: 'BOR',
+                oppColor: 'background: #1e3a8a; border-color: #ef4444;',
+                isHome: true,
+                venue: 'Apostolos Nikolaidis Stadium'
+            },
+
+            // RECENT RESULTS (REVERSE CHRONOLOGICAL)
+            {
+                id: 'fc-res-1',
+                team: 'FC',
+                isFriendly: false,
+                status: 'RECENT',
+                dateStr: '2026-09-16T18:00:00',
+                displayDate: 'Wednesday, Sep 16, 2026',
+                displayTime: '18:00 EEST',
+                competition: 'Greek Cup',
+                tvChannel: 'Cosmote Sport 1 HD',
+                tvColorClass: '',
+                opponent: 'Kifisia FC',
+                oppInitials: 'KIF',
+                oppColor: 'background: #18181b; border-color: #3b82f6;',
+                isHome: false,
+                venue: 'Zirineio Municipal Stadium',
+                score: '0 - 2',
+                resultBadge: 'WIN'
+            },
+            {
+                id: 'fc-res-2',
+                team: 'FC',
+                isFriendly: false,
+                status: 'RECENT',
+                dateStr: '2026-09-13T20:30:00',
+                displayDate: 'Sunday, Sep 13, 2026',
+                displayTime: '20:30 EEST',
+                competition: 'Super League Greece',
+                tvChannel: 'Cosmote Sport 1 HD',
+                tvColorClass: '',
+                opponent: 'Panetolikos',
+                oppInitials: 'PNT',
+                oppColor: 'background: #854d0e; border-color: #eab308;',
+                isHome: true,
+                venue: 'Apostolos Nikolaidis Stadium',
+                score: '3 - 0',
+                resultBadge: 'WIN'
+            },
+            {
+                id: 'fc-res-3',
+                team: 'FC',
+                isFriendly: false,
+                status: 'RECENT',
+                dateStr: '2026-09-10T19:30:00',
+                displayDate: 'Thursday, Sep 10, 2026',
+                displayTime: '19:30 EEST',
+                competition: 'Super League Greece',
+                tvChannel: 'Cosmote Sport 1 HD',
+                tvColorClass: '',
+                opponent: 'Kifisia FC',
+                oppInitials: 'KIF',
+                oppColor: 'background: #18181b; border-color: #3b82f6;',
+                isHome: true,
+                venue: 'Apostolos Nikolaidis Stadium',
+                score: '3 - 1',
+                resultBadge: 'WIN'
+            },
+            {
+                id: 'fc-res-4',
+                team: 'FC',
+                isFriendly: false,
+                status: 'RECENT',
+                dateStr: '2026-09-06T20:00:00',
+                displayDate: 'Sunday, Sep 06, 2026',
+                displayTime: '20:00 EEST',
+                competition: 'Super League Greece',
+                tvChannel: 'Cosmote Sport 1 HD',
+                tvColorClass: '',
+                opponent: 'PAOK FC',
+                oppInitials: 'PAOK',
+                oppColor: 'background: #18181b; border-color: #a1a1aa;',
+                isHome: true,
+                venue: 'Apostolos Nikolaidis Stadium',
+                score: '3 - 1',
+                resultBadge: 'WIN'
+            }
+        ];
+
+        // Active State Filters
+        let currentFilters = {
+            team: 'ALL',
+            status: 'UPCOMING',
+            type: 'ALL',
+            search: ''
+        };
+
+        function setFilter(category, val) {
+            currentFilters[category] = val;
+            
+            // Update Active UI Pills
+            const buttons = document.querySelectorAll(`[id^="btn-${category}-"]`);
+            buttons.forEach(btn => {
+                if (btn.id === `btn-${category}-${val}`) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            renderSchedule();
+        }
+
+        function handleSearch() {
+            currentFilters.search = document.getElementById('searchInput').value.toLowerCase();
+            renderSchedule();
+        }
+
+        function renderSchedule() {
+            const container = document.getElementById('matchesContainer');
+            container.innerHTML = '';
+
+            let filtered = matchesData.filter(m => {
+                if (currentFilters.team !== 'ALL' && m.team !== currentFilters.team) return false;
+                if (currentFilters.status !== 'ALL' && m.status !== currentFilters.status) return false;
+                if (currentFilters.type === 'OFFICIAL' && m.isFriendly) return false;
+                if (currentFilters.type === 'FRIENDLY' && !m.isFriendly) return false;
+                
+                if (currentFilters.search) {
+                    const text = `${m.opponent} ${m.venue} ${m.tvChannel} ${m.competition}`.toLowerCase();
+                    if (!text.includes(currentFilters.search)) return false;
+                }
+                return true;
+            });
+
+            // Ensure chronological order for upcoming, reverse for past results
+            filtered.sort((a, b) => {
+                const dateA = new Date(a.dateStr).getTime();
+                const dateB = new Date(b.dateStr).getTime();
+                
+                if (a.status === 'RECENT' && b.status === 'RECENT') {
+                    return dateB - dateA; // Most recent past games first
+                }
+                return dateA - dateB; // Soonest upcoming games first
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <h3>No fixtures found for selected criteria</h3>
+                        <p style="font-size: 0.8rem; margin-top: 0.4rem;">Try adjusting the team, friendly or status filters.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(m => {
+                const card = document.createElement('div');
+                card.className = `match-card ${m.isToday ? 'is-today-card' : ''}`;
+
+                const isFC = m.team === 'FC';
+                const teamBadgeClass = isFC ? 'badge-fc' : 'badge-bc';
+
+                card.innerHTML = `
+                    <div>
+                        <div class="match-card-header">
+                            <div style="display: flex; gap: 0.4rem; align-items: center;">
+                                <span class="badge ${teamBadgeClass}">
+                                    ${isFC ? '⚽ PAO FC' : '🏀 PAO BC'}
+                                </span>
+                                ${m.isToday ? `<span class="badge" style="background: #ef4444; color: white;">🚨 TODAY</span>` : ''}
+                            </div>
+                            <span class="badge ${m.isFriendly ? 'badge-friendly' : 'badge-comp'}">
+                                ${m.isFriendly ? '🤝 Friendly' : m.competition}
+                            </span>
+                        </div>
+
+                        <div class="match-teams-wrapper" style="display: flex; align-items: center; justify-content: space-between; margin: 1rem 0;">
+                            <div class="team-box">
+                                <div class="team-avatar team-avatar-pao">☘</div>
+                                <span class="team-name" style="font-size: 0.9rem;">Panathinaikos</span>
+                                <span class="team-role">${m.isHome ? 'HOME' : 'AWAY'}</span>
+                            </div>
+                            
+                            ${m.status === 'RECENT' 
+                                ? `<div class="score-display">${m.score}</div>` 
+                                : `<span class="vs-divider" style="font-size: 1.1rem;">VS</span>`
+                            }
+
+                            <div class="team-box">
+                                <div class="team-avatar" style="${m.oppColor}">${m.oppInitials}</div>
+                                <span class="team-name" style="font-size: 0.9rem;">${m.opponent}</span>
+                                <span class="team-role">${m.isHome ? 'AWAY' : 'HOME'}</span>
+                            </div>
+                        </div>
+
+                        <div class="tv-highlight-box">
+                            <span class="tv-channel-badge ${m.tvColorClass || ''}">📺 ${m.tvChannel}</span>
+                            <div class="match-venue-time">${m.displayDate} • ${m.displayTime}</div>
+                            <div class="match-venue-time">📍 ${m.venue}</div>
+                        </div>
+                    </div>
+
+                    ${m.status === 'UPCOMING' ? `
+                        <button onclick="addCalEvent('${m.id}')" class="action-btn" style="margin-top: 0.4rem; padding: 0.5rem; font-size: 0.8rem;">
+                            📅 Add to Google Calendar
+                        </button>
+                    ` : ''}
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        // Live Countdown Engine targeting today's game (Sep 18, 2026 @ 21:15 EEST)
+        function startHeroCountdown() {
+            const target = new Date('2026-09-18T21:15:00').getTime();
+
+            function updateTimer() {
+                const now = new Date().getTime();
+                const diff = target - now;
+
+                if (diff <= 0) {
+                    document.getElementById('hero-d').innerText = "00";
+                    document.getElementById('hero-h').innerText = "00";
+                    document.getElementById('hero-m').innerText = "00";
+                    document.getElementById('hero-s').innerText = "00";
+                    return;
+                }
+
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('hero-d').innerText = String(d).padStart(2, '0');
+                document.getElementById('hero-h').innerText = String(h).padStart(2, '0');
+                document.getElementById('hero-m').innerText = String(m).padStart(2, '0');
+                document.getElementById('hero-s').innerText = String(s).padStart(2, '0');
+            }
+
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+
+        // Google Calendar Event Generator
+        function addCalEvent(matchId) {
+            const m = matchesData.find(item => item.id === matchId);
+            if (!m) return;
+
+            const startDate = new Date(m.dateStr);
+            const endDate = new Date(startDate.getTime() + 2 * 60 * 60 * 1000);
+            const formatIso = date => date.toISOString().replace(/-|:|\.\d\d\d/g, "");
+
+            const title = encodeURIComponent(`Panathinaikos ${m.team} vs ${m.opponent}`);
+            const details = encodeURIComponent(`Panathinaikos ${m.team} vs ${m.opponent}\nLive TV: ${m.tvChannel}\nCompetition: ${m.competition}\nVenue: ${m.venue}`);
+            const location = encodeURIComponent(m.venue);
+            const dates = `${formatIso(startDate)}/${formatIso(endDate)}`;
+
+            const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
+            window.open(url, '_blank');
+        }
+
+        window.onload = function() {
+            startHeroCountdown();
+            renderSchedule();
+        };
+    </script>
+</body>
+</html>
