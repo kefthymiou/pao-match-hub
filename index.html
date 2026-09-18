@@ -19,9 +19,6 @@
       --text-main: #f3f4f6;
       --text-muted: #9ca3af;
       --gold: #f59e0b;
-      --win: #10b981;
-      --loss: #ef4444;
-      --draw: #6b7280;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,9 +41,8 @@
       padding: 0 20px;
     }
 
-    /* Header */
     header {
-      padding: 24px 0;
+      padding: 20px 0;
       border-bottom: 1px solid var(--pao-border);
       backdrop-filter: blur(12px);
       position: sticky;
@@ -90,11 +86,10 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* Controls Bar */
     .controls {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
       align-items: center;
     }
 
@@ -110,7 +105,7 @@
       background: transparent;
       border: none;
       color: var(--text-muted);
-      padding: 8px 16px;
+      padding: 8px 14px;
       border-radius: 8px;
       font-weight: 600;
       font-size: 13px;
@@ -131,7 +126,7 @@
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--pao-border);
       color: white;
-      padding: 8px 16px;
+      padding: 8px 14px;
       border-radius: 10px;
       font-size: 13px;
       outline: none;
@@ -143,18 +138,17 @@
       border-color: var(--pao-emerald);
     }
 
-    /* Hero / Next Match */
     .hero-section {
-      margin: 32px 0;
+      margin: 28px 0;
     }
 
     .section-title {
-      font-size: 14px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--pao-emerald);
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -166,6 +160,7 @@
       font-size: 11px;
       padding: 2px 8px;
       border-radius: 20px;
+      font-weight: 800;
       animation: pulse 1.5s infinite;
     }
 
@@ -176,15 +171,15 @@
     }
 
     .hero-card {
-      background: linear-gradient(145deg, rgba(0, 77, 37, 0.4), rgba(8, 15, 11, 0.9));
+      background: linear-gradient(145deg, rgba(0, 77, 37, 0.45), rgba(8, 15, 11, 0.95));
       border: 1px solid var(--pao-emerald);
       border-radius: 20px;
-      padding: 28px;
+      padding: 24px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(16, 185, 129, 0.1);
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      gap: 24px;
+      gap: 20px;
       position: relative;
       overflow: hidden;
     }
@@ -194,43 +189,42 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .hero-badge-img {
-      width: 70px;
-      height: 70px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.05);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
+      font-size: 30px;
       border: 1px solid var(--pao-border);
     }
 
     .hero-team-name {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 800;
     }
 
     .hero-center {
       text-align: center;
       display: flex;
-      flex-direction: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .hero-tv {
       background: rgba(245, 158, 11, 0.15);
-      border: 1px solid rgba(245, 158, 11, 0.4);
+      border: 1px solid rgba(245, 158, 11, 0.5);
       color: var(--gold);
-      padding: 6px 14px;
+      padding: 5px 14px;
       border-radius: 20px;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -238,61 +232,59 @@
 
     .countdown {
       display: flex;
-      gap: 12px;
-      margin-top: 8px;
+      gap: 8px;
+      margin-top: 4px;
     }
 
     .count-unit {
       background: rgba(0, 0, 0, 0.5);
       border: 1px solid var(--pao-border);
-      padding: 8px 12px;
-      border-radius: 10px;
-      min-width: 54px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      min-width: 50px;
     }
 
     .count-num {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 800;
       color: var(--pao-emerald);
       display: block;
     }
 
     .count-label {
-      font-size: 10px;
+      font-size: 9px;
       color: var(--text-muted);
       text-transform: uppercase;
     }
 
-    /* Match List Grid */
     .match-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 18px;
     }
 
     .match-card {
       background: var(--pao-card-bg);
       border: 1px solid var(--pao-border);
       border-radius: 16px;
-      padding: 20px;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 18px;
+      transition: all 0.25s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      position: relative;
+      gap: 12px;
     }
 
     .match-card:hover {
       border-color: var(--pao-border-hover);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
     }
 
     .card-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
     }
 
     .competition-badge {
@@ -300,13 +292,12 @@
       font-weight: 700;
       text-transform: uppercase;
       color: var(--text-muted);
-      letter-spacing: 0.5px;
     }
 
     .team-type-tag {
       font-size: 11px;
       font-weight: 800;
-      padding: 3px 8px;
+      padding: 2px 7px;
       border-radius: 6px;
     }
 
@@ -316,8 +307,7 @@
     .teams-container {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 10px;
     }
 
     .team-row {
@@ -331,27 +321,26 @@
       align-items: center;
       gap: 10px;
       font-weight: 700;
-      font-size: 15px;
+      font-size: 14px;
     }
 
     .tv-badge {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #f3f4f6;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-main);
       font-size: 12px;
       font-weight: 600;
-      padding: 6px 12px;
+      padding: 5px 10px;
       border-radius: 8px;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 6px;
-      margin-top: 8px;
+      width: fit-content;
     }
 
     .card-bottom {
       border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 12px;
-      margin-top: 8px;
+      padding-top: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -362,20 +351,29 @@
     .match-time-local {
       color: var(--pao-emerald);
       font-weight: 700;
-      font-size: 13px;
+    }
+
+    .cal-btn {
+      background: transparent;
+      border: 1px solid var(--pao-border);
+      color: var(--pao-emerald);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .cal-btn:hover {
+      background: var(--pao-green);
+      color: white;
     }
 
     @media (max-width: 768px) {
-      .hero-card {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .match-grid {
-        grid-template-columns: 1fr;
-      }
-      .search-input {
-        width: 100%;
-      }
+      .hero-card { grid-template-columns: 1fr; text-align: center; }
+      .match-grid { grid-template-columns: 1fr; }
+      .search-input { width: 100%; }
     }
   </style>
 </head>
@@ -411,8 +409,6 @@
   </header>
 
   <main class="container">
-    
-    <!-- Hero / Highlighted Match -->
     <section class="hero-section" id="heroSection">
       <div class="section-title">
         <span>NEXT FEATURED MATCH</span>
@@ -429,12 +425,12 @@
           <div class="hero-tv">📺 SKAI TV / ERTFLIX</div>
           <div style="font-size: 13px; color: var(--text-muted); font-weight: 600;">8th Pavlos Giannakopoulos Tournament</div>
           <div style="font-size: 12px; color: var(--pao-emerald); margin-top: 2px;" id="heroLocalTime">--:-- Local Time</div>
-          <div class="countdown" id="countdownTimer">
+          <div class="countdown">
             <div class="count-unit"><span class="count-num" id="cd-h">00</span><span class="count-label">HRS</span></div>
             <div class="count-unit"><span class="count-num" id="cd-m">00</span><span class="count-label">MIN</span></div>
             <div class="count-unit"><span class="count-num" id="cd-s">00</span><span class="count-label">SEC</span></div>
           </div>
-          <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">📍 Kallimarmaro</div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">📍 Kallimarmaro</div>
         </div>
 
         <div class="hero-team">
@@ -444,16 +440,13 @@
       </div>
     </section>
 
-    <!-- Schedule Grid -->
     <section>
       <div class="section-title" id="gridTitle">UPCOMING FIXTURES (SOONEST FIRST)</div>
       <div class="match-grid" id="matchGrid"></div>
     </section>
-
   </main>
 
   <script>
-    // Raw Match Data with ISO UTC timestamps
     const matchesData = [
       {
         id: 1,
@@ -462,7 +455,7 @@
         competition: 'Pavlos Giannakopoulos Tournament',
         isFriendly: true,
         home: true,
-        isoDate: '2026-09-18T18:15:00Z', // 21:15 EEST / Local Time
+        isoDate: '2026-09-18T18:15:00Z',
         venue: 'Kallimarmaro',
         tv: 'SKAI TV / ERTFLIX',
         status: 'UPCOMING'
@@ -550,8 +543,19 @@
     function formatLocalDateTime(isoString) {
       const date = new Date(isoString);
       const dateStr = date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
-      const timeStr = date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+      const timeStr = date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', hour12: false });
       return `${dateStr} @ ${timeStr}`;
+    }
+
+    function addGoogleCalendar(match) {
+      const start = new Date(match.isoDate);
+      const end = new Date(start.getTime() + (2 * 60 * 60 * 1000));
+      const fmt = d => d.toISOString().replace(/-|:|\.\d\d\d/g, "");
+      const title = encodeURIComponent(`Panathinaikos ${match.team} vs ${match.opponent}`);
+      const details = encodeURIComponent(`Broadcast: ${match.tv}\nVenue: ${match.venue}\nCompetition: ${match.competition}`);
+      const loc = encodeURIComponent(match.venue);
+      const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${fmt(start)}/${fmt(end)}&details=${details}&location=${loc}`;
+      window.open(url, '_blank');
     }
 
     function renderHero() {
@@ -604,7 +608,6 @@
         return true;
       });
 
-      // Sort chronological (Soonest first for UPCOMING, Latest first for RESULTS)
       filtered.sort((a, b) => {
         const dateA = new Date(a.isoDate);
         const dateB = new Date(b.isoDate);
@@ -631,7 +634,7 @@
               <span class="team-type-tag ${m.team === 'BC' ? 'tag-bc' : 'tag-fc'}">${m.team}</span>
             </div>
 
-            <div class="teams-container">
+            <div class="teams-container" style="margin-top: 10px;">
               <div class="team-row">
                 <div class="team-info">
                   <span>${m.home && m.team === 'BC' ? '☘' : '🛡️'}</span>
@@ -648,14 +651,17 @@
               </div>
             </div>
 
-            <div class="tv-badge">
+            <div class="tv-badge" style="margin-top: 12px;">
               📺 Broadcast: <strong style="color:var(--pao-emerald);">${m.tv}</strong>
             </div>
           </div>
 
           <div class="card-bottom">
             <span>📍 ${m.venue}</span>
-            <span class="match-time-local">${formatLocalDateTime(m.isoDate)}</span>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="match-time-local">${formatLocalDateTime(m.isoDate)}</span>
+              ${m.status === 'UPCOMING' ? `<button class="cal-btn" onclick='addGoogleCalendar(${JSON.stringify(m)})'>+ Cal</button>` : ''}
+            </div>
           </div>
         `;
 
@@ -693,7 +699,6 @@
       el.classList.add('active');
     }
 
-    // Initialize
     renderHero();
     renderMatches();
   </script>
