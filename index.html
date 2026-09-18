@@ -3,7 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panathinaikos Match Hub | PAO FC & BC Schedule</title>
+  
+  <!-- SEO Optimization Meta Tags -->
+  <title>PAO Zone | Πρόγραμμα Παναθηναϊκού FC & BC, Κανάλι Μετάδοσης & Live Αγώνες</title>
+  <meta name="description" content="Δείτε το πλήρες πρόγραμμα του Παναθηναϊκού σε ποδόσφαιρο (PAO FC) και μπάσκετ (PAO BC). Ώρες αγώνων, ζωντανές μεταδόσεις, κανάλια (Cosmote, Nova, ΕΡΤ, ΣΚΑΪ) και επόμενοι αγώνες.">
+  <meta name="keywords" content="Παναθηναϊκός, πρόγραμμα Παναθηναϊκού, PAO BC, PAO FC, πότε παίζει ο Παναθηναϊκός, κανάλι Παναθηναϊκός, EuroLeague, Super League, PAO Zone">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://paozone.gr">
+
+  <!-- OpenGraph / Facebook / Messaging Apps -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://paozone.gr/">
+  <meta property="og:title" content="PAO Zone | Πρόγραμμα & Κανάλι Μετάδοσης Παναθηναϊκού (FC & BC)">
+  <meta property="og:description" content="Όλοι οι αγώνες του Παναθηναϊκού σε Ποδόσφαιρο και Μπάσκετ. Ώρες έναρξης στην τοπική σας ώρα και κανάλια μετάδοσης.">
+  <meta property="og:image" content="https://paozone.gr/og-image.png">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PAO Zone | Πρόγραμμα Παναθηναϊκού">
+  <meta name="twitter:description" content="Δείτε πότε παίζει ο Παναθηναϊκός (FC & BC) και σε ποιο κανάλι.">
+
+  <!-- JSON-LD Structured Data for Google Indexing -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsTeam",
+    "name": "Panathinaikos",
+    "alternateName": "PAO Zone",
+    "url": "https://paozone.gr",
+    "sport": ["Basketball", "Soccer"],
+    "memberOf": [
+      { "@type": "SportsOrganization", "name": "EuroLeague" },
+      { "@type": "SportsOrganization", "name": "Super League Greece" }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -13,9 +48,9 @@
       --pao-emerald: #10b981;
       --pao-dark-green: #004d25;
       --pao-black: #080f0b;
-      --pao-card-bg: rgba(18, 30, 23, 0.75);
-      --pao-border: rgba(16, 185, 129, 0.18);
-      --pao-border-hover: rgba(16, 185, 129, 0.45);
+      --pao-card-bg: rgba(18, 30, 23, 0.8);
+      --pao-border: rgba(16, 185, 129, 0.2);
+      --pao-border-hover: rgba(16, 185, 129, 0.5);
       --text-main: #f3f4f6;
       --text-muted: #9ca3af;
       --gold: #f59e0b;
@@ -29,7 +64,7 @@
       color: var(--text-main);
       min-height: 100vh;
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(0, 135, 68, 0.25), transparent 60%),
+        radial-gradient(circle at 50% 0%, rgba(0, 135, 68, 0.3), transparent 60%),
         radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.1), transparent 50%);
       background-attachment: fixed;
       padding-bottom: 60px;
@@ -42,20 +77,19 @@
     }
 
     header {
-      padding: 20px 0;
+      padding: 16px 0;
       border-bottom: 1px solid var(--pao-border);
       backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(8, 15, 11, 0.85);
+      background: rgba(8, 15, 11, 0.9);
     }
 
     .header-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       gap: 16px;
     }
 
@@ -63,33 +97,46 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      text-decoration: none;
     }
 
-    .shamrock-logo {
-      width: 44px;
-      height: 44px;
+    .brand-logo-wrap {
+      width: 42px;
+      height: 42px;
       background: var(--pao-green);
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
-      box-shadow: 0 0 20px rgba(0, 135, 68, 0.5);
+      box-shadow: 0 0 15px rgba(0, 135, 68, 0.5);
     }
 
     .brand-title {
       font-size: 22px;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: -0.5px;
       background: linear-gradient(135deg, #ffffff 30%, var(--pao-emerald));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
+    /* Mobile Sandwich Menu Toggle Button */
+    .menu-toggle-btn {
+      display: none;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--pao-border);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    /* Controls Bar */
     .controls {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
     }
 
@@ -130,7 +177,7 @@
       border-radius: 10px;
       font-size: 13px;
       outline: none;
-      width: 180px;
+      width: 170px;
       transition: border 0.2s ease;
     }
 
@@ -138,6 +185,7 @@
       border-color: var(--pao-emerald);
     }
 
+    /* Hero Match Card */
     .hero-section {
       margin: 28px 0;
     }
@@ -147,7 +195,7 @@
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--pao-emerald);
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 14px;
       display: flex;
       align-items: center;
@@ -160,7 +208,6 @@
       font-size: 11px;
       padding: 2px 8px;
       border-radius: 20px;
-      font-weight: 800;
       animation: pulse 1.5s infinite;
     }
 
@@ -174,14 +221,13 @@
       background: linear-gradient(145deg, rgba(0, 77, 37, 0.45), rgba(8, 15, 11, 0.95));
       border: 1px solid var(--pao-emerald);
       border-radius: 20px;
-      padding: 24px;
+      padding: 28px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(16, 185, 129, 0.1);
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      gap: 20px;
+      gap: 24px;
       position: relative;
-      overflow: hidden;
     }
 
     .hero-team {
@@ -189,23 +235,28 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .hero-badge-img {
-      width: 64px;
-      height: 64px;
+    .hero-badge-wrap {
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.05);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
       border: 1px solid var(--pao-border);
+      padding: 10px;
+    }
+
+    .hero-badge-wrap svg {
+      width: 100%;
+      height: 100%;
     }
 
     .hero-team-name {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 800;
     }
 
@@ -214,14 +265,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .hero-tv {
       background: rgba(245, 158, 11, 0.15);
-      border: 1px solid rgba(245, 158, 11, 0.5);
+      border: 1px solid rgba(245, 158, 11, 0.4);
       color: var(--gold);
-      padding: 5px 14px;
+      padding: 6px 14px;
       border-radius: 20px;
       font-size: 13px;
       font-weight: 800;
@@ -232,20 +283,20 @@
 
     .countdown {
       display: flex;
-      gap: 8px;
-      margin-top: 4px;
+      gap: 10px;
+      margin-top: 6px;
     }
 
     .count-unit {
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.6);
       border: 1px solid var(--pao-border);
-      padding: 6px 10px;
-      border-radius: 8px;
-      min-width: 50px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      min-width: 54px;
     }
 
     .count-num {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 800;
       color: var(--pao-emerald);
       display: block;
@@ -257,34 +308,35 @@
       text-transform: uppercase;
     }
 
+    /* Match List Grid */
     .match-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
     }
 
     .match-card {
       background: var(--pao-card-bg);
       border: 1px solid var(--pao-border);
       border-radius: 16px;
-      padding: 18px;
+      padding: 20px;
       transition: all 0.25s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 12px;
     }
 
     .match-card:hover {
       border-color: var(--pao-border-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
     }
 
     .card-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 14px;
     }
 
     .competition-badge {
@@ -297,7 +349,7 @@
     .team-type-tag {
       font-size: 11px;
       font-weight: 800;
-      padding: 2px 7px;
+      padding: 3px 8px;
       border-radius: 6px;
     }
 
@@ -307,7 +359,8 @@
     .teams-container {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
+      margin-bottom: 14px;
     }
 
     .team-row {
@@ -321,26 +374,35 @@
       align-items: center;
       gap: 10px;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 15px;
+    }
+
+    .team-icon-sm {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .tv-badge {
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text-main);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #f3f4f6;
       font-size: 12px;
       font-weight: 600;
-      padding: 5px 10px;
+      padding: 6px 12px;
       border-radius: 8px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      width: fit-content;
+      margin-top: 6px;
     }
 
     .card-bottom {
       border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 10px;
+      padding-top: 12px;
+      margin-top: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -350,43 +412,84 @@
 
     .match-time-local {
       color: var(--pao-emerald);
-      font-weight: 700;
+      font-weight: 800;
+      font-size: 13px;
     }
 
-    .cal-btn {
-      background: transparent;
-      border: 1px solid var(--pao-border);
-      color: var(--pao-emerald);
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
+    /* Mobile Responsive Adjustments */
+    @media (max-width: 820px) {
+      .menu-toggle-btn {
+        display: block;
+      }
 
-    .cal-btn:hover {
-      background: var(--pao-green);
-      color: white;
-    }
+      .controls {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        padding-top: 14px;
+        gap: 10px;
+      }
 
-    @media (max-width: 768px) {
-      .hero-card { grid-template-columns: 1fr; text-align: center; }
-      .match-grid { grid-template-columns: 1fr; }
-      .search-input { width: 100%; }
+      .controls.open {
+        display: flex;
+      }
+
+      .btn-group {
+        justify-content: space-between;
+      }
+
+      .search-input {
+        width: 100%;
+      }
+
+      .hero-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .match-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- SVG Crest Definitions -->
+  <svg style="display: none;">
+    <!-- PAO BC Crest (7-Stars Shamrock) -->
+    <g id="pao-bc-crest">
+      <path d="M12 2 L13.5 6 L18 6 L14.5 8.5 L16 13 L12 10 L8 13 L9.5 8.5 L6 6 L10.5 6 Z" fill="#f59e0b" transform="scale(0.35) translate(10, -5)"/>
+      <path d="M12 21 C12 21, 4 16, 4 9 C4 5, 7 2, 12 2 C17 2, 20 5, 20 9 C20 16, 12 21, 12 21 Z" fill="#008744" stroke="#10b981" stroke-width="1.5"/>
+      <path d="M12 6 C10 6 9 8 9 10 C9 12 12 15 12 15 C12 15 15 12 15 10 C15 8 14 6 12 6 Z" fill="#ffffff"/>
+    </g>
+
+    <!-- PAO FC Crest (Classic Shamrock Crest) -->
+    <g id="pao-fc-crest">
+      <circle cx="12" cy="12" r="10" fill="#008744" stroke="#f59e0b" stroke-width="1.5"/>
+      <path d="M12 6 C10.5 6 9.5 7.5 9.5 9 C9.5 10.5 11 12 12 12 C13 12 14.5 10.5 14.5 9 C14.5 7.5 13.5 6 12 6 Z" fill="#ffffff"/>
+      <path d="M12 12 C10.5 12 9 13.5 9 15 C9 16.5 10.5 17.5 12 17.5 C13.5 17.5 15 16.5 15 15 C15 13.5 13.5 12 12 12 Z" fill="#ffffff"/>
+      <path d="M12 12 C10.5 10.5 9 11 8 12 C7 13 7.5 14.5 9 15 C10.5 15.5 12 14 12 12 Z" fill="#ffffff"/>
+      <path d="M12 12 C13.5 10.5 15 11 16 12 C17 13 16.5 14.5 15 15 C13.5 15.5 12 14 12 12 Z" fill="#ffffff"/>
+    </g>
+  </svg>
+
   <header>
     <div class="container header-inner">
-      <div class="brand">
-        <div class="shamrock-logo">☘</div>
-        <div class="brand-title">PAO MATCH HUB</div>
-      </div>
+      <a href="#" class="brand">
+        <div class="brand-logo-wrap">
+          <svg width="26" height="26" viewBox="0 0 24 24"><use href="#pao-bc-crest"/></svg>
+        </div>
+        <div class="brand-title">PAO ZONE</div>
+      </a>
 
-      <div class="controls">
+      <!-- Mobile Hamburger Menu Button -->
+      <button class="menu-toggle-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu">
+        🍔 Menu
+      </button>
+
+      <div class="controls" id="controlsBar">
         <div class="btn-group">
           <button class="filter-btn active" onclick="setTeamFilter('ALL', this)">ALL</button>
           <button class="filter-btn" onclick="setTeamFilter('BC', this)">🏀 PAO BC</button>
@@ -403,47 +506,55 @@
           <button class="filter-btn" onclick="setStatusFilter('RESULTS', this)">Results</button>
         </div>
 
-        <input type="text" class="search-input" id="searchBox" placeholder="Search team, venue, TV..." oninput="handleSearch()">
+        <input type="text" class="search-input" id="searchBox" placeholder="Search team, TV..." oninput="handleSearch()">
       </div>
     </div>
   </header>
 
   <main class="container">
+    
+    <!-- Hero / Featured Match -->
     <section class="hero-section" id="heroSection">
       <div class="section-title">
-        <span>NEXT FEATURED MATCH</span>
+        <span>FEATURED MATCH</span>
         <span class="today-badge">🚨 GAMEDAY / TODAY</span>
       </div>
 
       <div class="hero-card">
         <div class="hero-team">
-          <div class="hero-badge-img">☘</div>
+          <div class="hero-badge-wrap">
+            <svg viewBox="0 0 24 24"><use href="#pao-bc-crest"/></svg>
+          </div>
           <div class="hero-team-name">Panathinaikos BC</div>
         </div>
 
         <div class="hero-center">
           <div class="hero-tv">📺 SKAI TV / ERTFLIX</div>
           <div style="font-size: 13px; color: var(--text-muted); font-weight: 600;">8th Pavlos Giannakopoulos Tournament</div>
-          <div style="font-size: 12px; color: var(--pao-emerald); margin-top: 2px;" id="heroLocalTime">--:-- Local Time</div>
+          <div style="font-size: 13px; color: var(--pao-emerald); font-weight: 800; margin-top: 2px;" id="heroLocalTime">--:--</div>
+          
           <div class="countdown">
             <div class="count-unit"><span class="count-num" id="cd-h">00</span><span class="count-label">HRS</span></div>
             <div class="count-unit"><span class="count-num" id="cd-m">00</span><span class="count-label">MIN</span></div>
             <div class="count-unit"><span class="count-num" id="cd-s">00</span><span class="count-label">SEC</span></div>
           </div>
-          <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">📍 Kallimarmaro</div>
         </div>
 
         <div class="hero-team">
-          <div class="hero-badge-img">🏀</div>
+          <div class="hero-badge-wrap">
+            <span style="font-size: 32px;">🏀</span>
+          </div>
           <div class="hero-team-name">JL Bourg-en-Bresse</div>
         </div>
       </div>
     </section>
 
+    <!-- Schedule Grid -->
     <section>
       <div class="section-title" id="gridTitle">UPCOMING FIXTURES (SOONEST FIRST)</div>
       <div class="match-grid" id="matchGrid"></div>
     </section>
+
   </main>
 
   <script>
@@ -456,7 +567,6 @@
         isFriendly: true,
         home: true,
         isoDate: '2026-09-18T18:15:00Z',
-        venue: 'Kallimarmaro',
         tv: 'SKAI TV / ERTFLIX',
         status: 'UPCOMING'
       },
@@ -468,7 +578,6 @@
         isFriendly: true,
         home: true,
         isoDate: '2026-09-19T17:00:00Z',
-        venue: 'Kallimarmaro',
         tv: 'SKAI TV / ERTFLIX',
         status: 'UPCOMING'
       },
@@ -480,7 +589,6 @@
         isFriendly: false,
         home: false,
         isoDate: '2026-09-20T16:30:00Z',
-        venue: 'Kalamata Municipal Stadium',
         tv: 'Cosmote Sport 1 HD',
         status: 'UPCOMING'
       },
@@ -492,7 +600,6 @@
         isFriendly: false,
         home: true,
         isoDate: '2026-09-24T18:15:00Z',
-        venue: 'OAKA Altion',
         tv: 'NovaSports Prime',
         status: 'UPCOMING'
       },
@@ -504,7 +611,6 @@
         isFriendly: false,
         home: true,
         isoDate: '2026-09-30T18:15:00Z',
-        venue: 'OAKA Altion',
         tv: 'NovaSports 4',
         status: 'UPCOMING'
       },
@@ -516,7 +622,6 @@
         isFriendly: false,
         home: false,
         isoDate: '2026-10-11T17:30:00Z',
-        venue: 'Karaiskakis Stadium',
         tv: 'Cosmote Sport 1 HD',
         status: 'UPCOMING'
       },
@@ -528,7 +633,6 @@
         isFriendly: true,
         home: false,
         isoDate: '2026-09-12T17:00:00Z',
-        venue: 'Nicosia Arena',
         tv: 'ERT3',
         status: 'RESULTS',
         score: '89 - 81 (W)'
@@ -540,6 +644,7 @@
     let currentStatus = 'UPCOMING';
     let searchQuery = '';
 
+    // Enforce Strict 24-Hour Format
     function formatLocalDateTime(isoString) {
       const date = new Date(isoString);
       const dateStr = date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
@@ -547,15 +652,9 @@
       return `${dateStr} @ ${timeStr}`;
     }
 
-    function addGoogleCalendar(match) {
-      const start = new Date(match.isoDate);
-      const end = new Date(start.getTime() + (2 * 60 * 60 * 1000));
-      const fmt = d => d.toISOString().replace(/-|:|\.\d\d\d/g, "");
-      const title = encodeURIComponent(`Panathinaikos ${match.team} vs ${match.opponent}`);
-      const details = encodeURIComponent(`Broadcast: ${match.tv}\nVenue: ${match.venue}\nCompetition: ${match.competition}`);
-      const loc = encodeURIComponent(match.venue);
-      const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${fmt(start)}/${fmt(end)}&details=${details}&location=${loc}`;
-      window.open(url, '_blank');
+    function toggleMobileMenu() {
+      const bar = document.getElementById('controlsBar');
+      bar.classList.toggle('open');
     }
 
     function renderHero() {
@@ -601,7 +700,6 @@
         if (searchQuery) {
           const q = searchQuery.toLowerCase();
           return m.opponent.toLowerCase().includes(q) || 
-                 m.venue.toLowerCase().includes(q) || 
                  m.tv.toLowerCase().includes(q) || 
                  m.competition.toLowerCase().includes(q);
         }
@@ -615,7 +713,7 @@
       });
 
       if (filtered.length === 0) {
-        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No matches found matching your filters.</div>`;
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No matches found matching your selection.</div>`;
         return;
       }
 
@@ -627,6 +725,11 @@
         const homeTeam = m.home ? paoTitle : m.opponent;
         const awayTeam = m.home ? m.opponent : paoTitle;
 
+        const paoSvgCrest = m.team === 'BC' ? '#pao-bc-crest' : '#pao-fc-crest';
+
+        const homeIcon = (m.home) ? `<svg class="team-icon-sm" viewBox="0 0 24 24"><use href="${paoSvgCrest}"/></svg>` : `<span>🛡️</span>`;
+        const awayIcon = (!m.home) ? `<svg class="team-icon-sm" viewBox="0 0 24 24"><use href="${paoSvgCrest}"/></svg>` : `<span>🛡️</span>`;
+
         card.innerHTML = `
           <div>
             <div class="card-top">
@@ -634,34 +737,31 @@
               <span class="team-type-tag ${m.team === 'BC' ? 'tag-bc' : 'tag-fc'}">${m.team}</span>
             </div>
 
-            <div class="teams-container" style="margin-top: 10px;">
+            <div class="teams-container">
               <div class="team-row">
                 <div class="team-info">
-                  <span>${m.home && m.team === 'BC' ? '☘' : '🛡️'}</span>
+                  ${homeIcon}
                   <span>${homeTeam}</span>
                 </div>
                 ${m.status === 'RESULTS' ? `<span style="font-weight:800">${m.score.split('-')[0]}</span>` : ''}
               </div>
               <div class="team-row">
                 <div class="team-info">
-                  <span>${!m.home && m.team === 'BC' ? '☘' : '🛡️'}</span>
+                  ${awayIcon}
                   <span>${awayTeam}</span>
                 </div>
                 ${m.status === 'RESULTS' ? `<span style="font-weight:800">${m.score.split('-')[1]}</span>` : ''}
               </div>
             </div>
 
-            <div class="tv-badge" style="margin-top: 12px;">
+            <div class="tv-badge">
               📺 Broadcast: <strong style="color:var(--pao-emerald);">${m.tv}</strong>
             </div>
           </div>
 
           <div class="card-bottom">
-            <span>📍 ${m.venue}</span>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <span class="match-time-local">${formatLocalDateTime(m.isoDate)}</span>
-              ${m.status === 'UPCOMING' ? `<button class="cal-btn" onclick='addGoogleCalendar(${JSON.stringify(m)})'>+ Cal</button>` : ''}
-            </div>
+            <span>Matchday</span>
+            <span class="match-time-local">${formatLocalDateTime(m.isoDate)}</span>
           </div>
         `;
 
