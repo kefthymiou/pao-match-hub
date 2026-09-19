@@ -1,57 +1,24 @@
 [
   {
-    "id": 1,
-    "team": "BC",
-    "opponent": "Partizan / Anadolu Efes",
-    "competition": "Pavlos Giannakopoulos Tournament Final",
-    "isFriendly": true,
-    "home": true,
-    "isoDate": "2026-09-20T17:00:00Z",
-    "tv": "SKAI TV / ERTFLIX",
-    "score": ""
-  },
-  {
-    "id": 2,
+    "id": "fc-2539952",
     "team": "FC",
-    "opponent": "Kalamata FC",
-    "competition": "Super League Greece",
+    "opponent": "Kalamata",
+    "competition": "Greek Super League 1",
     "isFriendly": false,
     "home": false,
-    "isoDate": "2026-09-21T16:30:00Z",
+    "isoDate": "2026-09-20T16:30:00Z",
     "tv": "Cosmote Sport 1 HD",
     "score": ""
   },
   {
-    "id": 3,
+    "id": "bc-2565449",
     "team": "BC",
     "opponent": "Paris Basketball",
-    "competition": "EuroLeague Round 1",
+    "competition": "EuroLeague Basketball",
     "isFriendly": false,
     "home": true,
     "isoDate": "2026-09-24T18:15:00Z",
     "tv": "NovaSports Prime",
-    "score": ""
-  },
-  {
-    "id": 4,
-    "team": "BC",
-    "opponent": "LDLC ASVEL",
-    "competition": "EuroLeague Round 2",
-    "isFriendly": false,
-    "home": true,
-    "isoDate": "2026-09-30T18:15:00Z",
-    "tv": "NovaSports 4",
-    "score": ""
-  },
-  {
-    "id": 5,
-    "team": "FC",
-    "opponent": "Olympiacos FC",
-    "competition": "Super League Greece (Derby)",
-    "isFriendly": false,
-    "home": false,
-    "isoDate": "2026-10-11T17:30:00Z",
-    "tv": "Cosmote Sport 1 HD",
     "score": ""
   }
 ]
