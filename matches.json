@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "team": "BC",
+    "opponent": "JL Bourg-en-Bresse",
+    "competition": "Pavlos Giannakopoulos Tournament",
+    "isFriendly": true,
+    "home": true,
+    "isoDate": "2026-09-19T18:15:00Z",
+    "tv": "SKAI TV / ERTFLIX",
+    "score": "84 - 79"
+  },
+  {
+    "id": 2,
+    "team": "BC",
+    "opponent": "Partizan / Anadolu Efes",
+    "competition": "Pavlos Giannakopoulos Tournament Final",
+    "isFriendly": true,
+    "home": true,
+    "isoDate": "2026-09-20T17:00:00Z",
+    "tv": "SKAI TV / ERTFLIX",
+    "score": ""
+  },
+  {
+    "id": 3,
+    "team": "FC",
+    "opponent": "Kalamata FC",
+    "competition": "Super League Greece",
+    "isFriendly": false,
+    "home": false,
+    "isoDate": "2026-09-21T16:30:00Z",
+    "tv": "Cosmote Sport 1 HD",
+    "score": ""
+  }
+]
