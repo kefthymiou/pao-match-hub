@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Shamrock Favicon for Browser Tabs -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23008744'/><path d='M50 20 C40 20 32 30 32 40 C32 50 42 58 50 58 C58 58 68 50 68 40 C68 30 60 20 50 20 Z' fill='%23ffffff'/><path d='M50 58 C38 58 26 68 34 80 C42 92 52 80 50 58 Z' fill='%23ffffff'/><path d='M50 58 C62 58 74 68 66 80 C58 92 48 80 50 58 Z' fill='%23ffffff'/><path d='M47 58 L43 88 L53 88 L49 58 Z' fill='%23ffffff'/></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23008744'/><path d='M50 20 C40 20 32 30 32 40 C32 50 42 58 50 58 C58 58 68 50 68 40 C68 30 60 20 50 20 Z' fill='%23ffffff'/><path d='M50 58 C38 58 26 68 34 80 C42 92 52 80 50 58 Z' fill='%23ffffff'/><path d='M50 58 C62 58 74 68 66 80 C56 92 48 80 50 58 Z' fill='%23ffffff'/><path d='M47 58 L43 88 L53 88 L49 58 Z' fill='%23ffffff'/></svg>">
 
   <!-- SEO Optimization Meta Tags -->
   <title>PAO Zone | Πρόγραμμα Παναθηναϊκού FC & BC, Κανάλι Μετάδοσης & Live Αγώνες</title>
-  <meta name="description" content="Δείτε το πλήρες πρόγραμμα του Παναθηναϊκού σε ποδόσφαιρο (PAO FC) και μπάσκετ (PAO BC). Ώρες αγώνων, ζωντανές μεταδόσεις, κανάλια (Cosmote, Nova, ΕΡΤ, ΣΚΑΪ) και επόμενοι αγώνες.">
+  <meta name="description" content="Δείτε το πλήρες πρόγραμμα του Παναθηναϊκού σε ποδόσφαιρο (PAO FC) και μπάσκετ (PAO BC). Dynamic 24h live schedule & κανάλια μετάδοσης.">
   <meta name="keywords" content="Παναθηναϊκός, πρόγραμμα Παναθηναϊκού, PAO BC, PAO FC, πότε παίζει ο Παναθηναϊκός, κανάλι Παναθηναϊκός, EuroLeague, Super League, PAO Zone">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://paozone.gr">
@@ -420,31 +420,11 @@
     <section class="hero-section" id="heroSection">
       <div class="section-title">
         <span>FEATURED MATCH</span>
-        <span class="today-badge">🚨 GAMEDAY / TODAY</span>
+        <span class="today-badge" id="heroBadgeLabel">🚨 GAMEDAY</span>
       </div>
 
-      <div class="hero-card">
-        <div class="hero-team">
-          <div class="hero-badge-wrap">☘</div>
-          <div class="hero-team-name">Panathinaikos BC</div>
-        </div>
-
-        <div class="hero-center">
-          <div class="hero-tv">📺 SKAI TV / ERTFLIX</div>
-          <div style="font-size: 13px; color: var(--text-muted); font-weight: 600;">8th Pavlos Giannakopoulos Tournament</div>
-          <div style="font-size: 13px; color: var(--pao-emerald); font-weight: 800; margin-top: 2px;" id="heroLocalTime">--:--</div>
-          
-          <div class="countdown">
-            <div class="count-unit"><span class="count-num" id="cd-h">00</span><span class="count-label">HRS</span></div>
-            <div class="count-unit"><span class="count-num" id="cd-m">00</span><span class="count-label">MIN</span></div>
-            <div class="count-unit"><span class="count-num" id="cd-s">00</span><span class="count-label">SEC</span></div>
-          </div>
-        </div>
-
-        <div class="hero-team">
-          <div class="hero-badge-wrap">🏀</div>
-          <div class="hero-team-name">JL Bourg-en-Bresse</div>
-        </div>
+      <div class="hero-card" id="heroCardContent">
+        <!-- Dynamically rendered -->
       </div>
     </section>
 
@@ -455,7 +435,8 @@
   </main>
 
   <script>
-    const matchesData = [
+    // Fallback schedule dataset
+    let matchesData = [
       {
         id: 1,
         team: 'BC',
@@ -465,7 +446,7 @@
         home: true,
         isoDate: '2026-09-18T18:15:00Z',
         tv: 'SKAI TV / ERTFLIX',
-        status: 'UPCOMING'
+        score: '84 - 79'
       },
       {
         id: 2,
@@ -476,7 +457,7 @@
         home: true,
         isoDate: '2026-09-19T17:00:00Z',
         tv: 'SKAI TV / ERTFLIX',
-        status: 'UPCOMING'
+        score: '88 - 82'
       },
       {
         id: 3,
@@ -487,7 +468,7 @@
         home: false,
         isoDate: '2026-09-20T16:30:00Z',
         tv: 'Cosmote Sport 1 HD',
-        status: 'UPCOMING'
+        score: ''
       },
       {
         id: 4,
@@ -498,7 +479,7 @@
         home: true,
         isoDate: '2026-09-24T18:15:00Z',
         tv: 'NovaSports Prime',
-        status: 'UPCOMING'
+        score: ''
       },
       {
         id: 5,
@@ -509,7 +490,7 @@
         home: true,
         isoDate: '2026-09-30T18:15:00Z',
         tv: 'NovaSports 4',
-        status: 'UPCOMING'
+        score: ''
       },
       {
         id: 6,
@@ -520,19 +501,7 @@
         home: false,
         isoDate: '2026-10-11T17:30:00Z',
         tv: 'Cosmote Sport 1 HD',
-        status: 'UPCOMING'
-      },
-      {
-        id: 7,
-        team: 'BC',
-        opponent: 'Maccabi Tel Aviv',
-        competition: 'Pre-Season Friendly',
-        isFriendly: true,
-        home: false,
-        isoDate: '2026-09-12T17:00:00Z',
-        tv: 'ERT3',
-        status: 'RESULTS',
-        score: '89 - 81 (W)'
+        score: ''
       }
     ];
 
@@ -541,6 +510,7 @@
     let currentStatus = 'UPCOMING';
     let searchQuery = '';
 
+    // Enforce 24-Hour Time Format
     function formatLocalDateTime(isoString) {
       const date = new Date(isoString);
       const dateStr = date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
@@ -548,12 +518,105 @@
       return `${dateStr} @ ${timeStr}`;
     }
 
-    function renderHero() {
-      const gamedayMatch = matchesData.find(m => m.id === 1);
-      if (gamedayMatch) {
-        document.getElementById('heroLocalTime').innerText = '🕒 Kickoff: ' + formatLocalDateTime(gamedayMatch.isoDate);
-        startCountdown(new Date(gamedayMatch.isoDate));
+    // Dynamic Live Sports API Fetcher (Option 3 - TheSportsDB)
+    async function fetchLiveSportsData() {
+      try {
+        const [resFC, resBC] = await Promise.all([
+          fetch('https://www.thesportsdb.com/api/v1/json/3/eventsnext.php?id=133746'),
+          fetch('https://www.thesportsdb.com/api/v1/json/3/eventsnext.php?id=135636')
+        ]);
+
+        const dataFC = await resFC.json();
+        const dataBC = await resBC.json();
+
+        let apiMatches = [];
+
+        if (dataFC && dataFC.events) {
+          dataFC.events.forEach(ev => {
+            apiMatches.push({
+              id: 'api-fc-' + ev.idEvent,
+              team: 'FC',
+              opponent: ev.strHomeTeam.includes('Panathinaikos') ? ev.strAwayTeam : ev.strHomeTeam,
+              competition: ev.strLeague || 'Super League Greece',
+              isFriendly: false,
+              home: ev.strHomeTeam.includes('Panathinaikos'),
+              isoDate: ev.strTimestamp || `${ev.dateEvent}T${ev.strTime || '18:00:00'}Z`,
+              tv: 'Cosmote Sport 1 HD',
+              score: ev.intHomeScore ? `${ev.intHomeScore} - ${ev.intAwayScore}` : ''
+            });
+          });
+        }
+
+        if (dataBC && dataBC.events) {
+          dataBC.events.forEach(ev => {
+            apiMatches.push({
+              id: 'api-bc-' + ev.idEvent,
+              team: 'BC',
+              opponent: ev.strHomeTeam.includes('Panathinaikos') ? ev.strAwayTeam : ev.strHomeTeam,
+              competition: ev.strLeague || 'EuroLeague',
+              isFriendly: false,
+              home: ev.strHomeTeam.includes('Panathinaikos'),
+              isoDate: ev.strTimestamp || `${ev.dateEvent}T${ev.strTime || '18:15:00'}Z`,
+              tv: 'NovaSports Prime',
+              score: ev.intHomeScore ? `${ev.intHomeScore} - ${ev.intAwayScore}` : ''
+            });
+          });
+        }
+
+        if (apiMatches.length > 0) {
+          matchesData = apiMatches;
+        }
+      } catch (err) {
+        console.warn('Live API unavailable. Serving local fixture schedule:', err);
+      } finally {
+        renderHero();
+        renderMatches();
       }
+    }
+
+    function renderHero() {
+      const heroContainer = document.getElementById('heroCardContent');
+      const now = new Date();
+
+      // Find next upcoming match dynamically
+      const upcomingMatches = matchesData
+        .filter(m => new Date(m.isoDate) >= now)
+        .sort((a, b) => new Date(a.isoDate) - new Date(b.isoDate));
+
+      const featured = upcomingMatches[0] || matchesData[0];
+      if (!featured) return;
+
+      const paoName = featured.team === 'BC' ? 'Panathinaikos BC' : 'Panathinaikos FC';
+      const homeName = featured.home ? paoName : featured.opponent;
+      const awayName = featured.home ? featured.opponent : paoName;
+
+      heroContainer.innerHTML = `
+        <div class="hero-team">
+          <div class="hero-badge-wrap">${featured.home ? '☘' : (featured.team === 'BC' ? '🏀' : '⚽')}</div>
+          <div class="hero-team-name">${homeName}</div>
+        </div>
+
+        <div class="hero-center">
+          <div class="hero-tv">📺 ${featured.tv}</div>
+          <div style="font-size: 13px; color: var(--text-muted); font-weight: 600;">${featured.competition}</div>
+          <div style="font-size: 13px; color: var(--pao-emerald); font-weight: 800; margin-top: 2px;">
+            🕒 Kickoff: ${formatLocalDateTime(featured.isoDate)}
+          </div>
+          
+          <div class="countdown">
+            <div class="count-unit"><span class="count-num" id="cd-h">00</span><span class="count-label">HRS</span></div>
+            <div class="count-unit"><span class="count-num" id="cd-m">00</span><span class="count-label">MIN</span></div>
+            <div class="count-unit"><span class="count-num" id="cd-s">00</span><span class="count-label">SEC</span></div>
+          </div>
+        </div>
+
+        <div class="hero-team">
+          <div class="hero-badge-wrap">${!featured.home ? '☘' : (featured.team === 'BC' ? '🏀' : '⚽')}</div>
+          <div class="hero-team-name">${awayName}</div>
+        </div>
+      `;
+
+      startCountdown(new Date(featured.isoDate));
     }
 
     function startCountdown(targetDate) {
@@ -583,11 +646,17 @@
     function renderMatches() {
       const grid = document.getElementById('matchGrid');
       grid.innerHTML = '';
+      const now = new Date();
 
       let filtered = matchesData.filter(m => {
+        const matchDate = new Date(m.isoDate);
+        const isPast = matchDate < now;
+        const dynamicStatus = isPast ? 'RESULTS' : 'UPCOMING';
+
         if (currentTeam !== 'ALL' && m.team !== currentTeam) return false;
         if (currentType === 'FRIENDLY' && !m.isFriendly) return false;
-        if (m.status !== currentStatus) return false;
+        if (dynamicStatus !== currentStatus) return false;
+
         if (searchQuery) {
           const q = searchQuery.toLowerCase();
           return m.opponent.toLowerCase().includes(q) || 
@@ -632,14 +701,14 @@
                   ${homeIcon}
                   <span>${homeTeam}</span>
                 </div>
-                ${m.status === 'RESULTS' ? `<span style="font-weight:800">${m.score.split('-')[0]}</span>` : ''}
+                ${m.score ? `<span style="font-weight:800">${m.score.split('-')[0]}</span>` : ''}
               </div>
               <div class="team-row">
                 <div class="team-info">
                   ${awayIcon}
                   <span>${awayTeam}</span>
                 </div>
-                ${m.status === 'RESULTS' ? `<span style="font-weight:800">${m.score.split('-')[1]}</span>` : ''}
+                ${m.score ? `<span style="font-weight:800">${m.score.split('-')[1]}</span>` : ''}
               </div>
             </div>
 
@@ -688,8 +757,8 @@
       el.classList.add('active');
     }
 
-    renderHero();
-    renderMatches();
+    // Initialize API & Render
+    fetchLiveSportsData();
   </script>
 </body>
 </html>
