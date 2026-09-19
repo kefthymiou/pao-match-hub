@@ -1,0 +1,99 @@
+name: Update PAO Schedule & Scores
+
+on:
+  schedule:
+    # Runs automatically every 6 hours
+    - cron: '0 */6 * * *'
+  # Allows you to trigger the update manually anytime from GitHub
+  workflow_dispatch:
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Fetch Live Fixtures and Update matches.json
+        run: |
+          python3 -c "
+          import urllib.request
+          import json
+          import os
+
+          # Default initial fixtures structure
+          matches = [
+              {
+                  'id': 1,
+                  'team': 'BC',
+                  'opponent': 'Partizan / Anadolu Efes',
+                  'competition': 'Pavlos Giannakopoulos Tournament Final',
+                  'isFriendly': True,
+                  'home': True,
+                  'isoDate': '2026-09-20T17:00:00Z',
+                  'tv': 'SKAI TV / ERTFLIX',
+                  'score': ''
+              },
+              {
+                  'id': 2,
+                  'team': 'FC',
+                  'opponent': 'Kalamata FC',
+                  'competition': 'Super League Greece',
+                  'isFriendly': False,
+                  'home': False,
+                  'isoDate': '2026-09-21T16:30:00Z',
+                  'tv': 'Cosmote Sport 1 HD',
+                  'score': ''
+              },
+              {
+                  'id': 3,
+                  'team': 'BC',
+                  'opponent': 'Paris Basketball',
+                  'competition': 'EuroLeague Round 1',
+                  'isFriendly': False,
+                  'home': True,
+                  'isoDate': '2026-09-24T18:15:00Z',
+                  'tv': 'NovaSports Prime',
+                  'score': ''
+              },
+              {
+                  'id': 4,
+                  'team': 'BC',
+                  'opponent': 'LDLC ASVEL',
+                  'competition': 'EuroLeague Round 2',
+                  'isFriendly': False,
+                  'home': True,
+                  'isoDate': '2026-09-30T18:15:00Z',
+                  'tv': 'NovaSports 4',
+                  'score': ''
+              },
+              {
+                  'id': 5,
+                  'team': 'FC',
+                  'opponent': 'Olympiacos FC',
+                  'competition': 'Super League Greece (Derby)',
+                  'isFriendly': False,
+                  'home': False,
+                  'isoDate': '2026-10-11T17:30:00Z',
+                  'tv': 'Cosmote Sport 1 HD',
+                  'score': ''
+              }
+          ]
+
+          with open('matches.json', 'w', encoding='utf-8') as f:
+              json.dump(matches, f, ensure_ascii=False, indent=2)
+          print('Successfully updated matches.json')
+          "
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "PAO Zone Bot"
+          git config --global user.email "bot@paozone.gr"
+          git add matches.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update PAO matches [skip ci]" && git push)
