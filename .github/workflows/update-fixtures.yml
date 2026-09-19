@@ -4,7 +4,7 @@ on:
   schedule:
     # Runs automatically every 6 hours
     - cron: '0 */6 * * *'
-  # Allows you to trigger the update manually anytime from GitHub
+  # Allows manual execution anytime from GitHub Actions UI
   workflow_dispatch:
 
 jobs:
@@ -20,78 +20,66 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Fetch Live Fixtures and Update matches.json
+      - name: Fetch Live Fixtures and Write matches.json
         run: |
           python3 -c "
           import urllib.request
           import json
-          import os
+          import datetime
 
-          # Default initial fixtures structure
-          matches = [
-              {
-                  'id': 1,
-                  'team': 'BC',
-                  'opponent': 'Partizan / Anadolu Efes',
-                  'competition': 'Pavlos Giannakopoulos Tournament Final',
-                  'isFriendly': True,
-                  'home': True,
-                  'isoDate': '2026-09-20T17:00:00Z',
-                  'tv': 'SKAI TV / ERTFLIX',
-                  'score': ''
-              },
-              {
-                  'id': 2,
-                  'team': 'FC',
-                  'opponent': 'Kalamata FC',
-                  'competition': 'Super League Greece',
-                  'isFriendly': False,
-                  'home': False,
-                  'isoDate': '2026-09-21T16:30:00Z',
-                  'tv': 'Cosmote Sport 1 HD',
-                  'score': ''
-              },
-              {
-                  'id': 3,
-                  'team': 'BC',
-                  'opponent': 'Paris Basketball',
-                  'competition': 'EuroLeague Round 1',
-                  'isFriendly': False,
-                  'home': True,
-                  'isoDate': '2026-09-24T18:15:00Z',
-                  'tv': 'NovaSports Prime',
-                  'score': ''
-              },
-              {
-                  'id': 4,
-                  'team': 'BC',
-                  'opponent': 'LDLC ASVEL',
-                  'competition': 'EuroLeague Round 2',
-                  'isFriendly': False,
-                  'home': True,
-                  'isoDate': '2026-09-30T18:15:00Z',
-                  'tv': 'NovaSports 4',
-                  'score': ''
-              },
-              {
-                  'id': 5,
-                  'team': 'FC',
-                  'opponent': 'Olympiacos FC',
-                  'competition': 'Super League Greece (Derby)',
-                  'isFriendly': False,
-                  'home': False,
-                  'isoDate': '2026-10-11T17:30:00Z',
-                  'tv': 'Cosmote Sport 1 HD',
-                  'score': ''
-              }
-          ]
+          # Free API endpoints for Panathinaikos FC (133746) and Panathinaikos BC (135636)
+          url_fc = 'https://www.thesportsdb.com/api/v1/json/3/eventsnext.php?id=133746'
+          url_bc = 'https://www.thesportsdb.com/api/v1/json/3/eventsnext.php?id=135636'
 
-          with open('matches.json', 'w', encoding='utf-8') as f:
-              json.dump(matches, f, ensure_ascii=False, indent=2)
-          print('Successfully updated matches.json')
+          headers = {'User-Agent': 'Mozilla/5.0'}
+          matches = []
+
+          def fetch_events(url, team_code, default_tv):
+              try:
+                  req = urllib.request.Request(url, headers=headers)
+                  with urllib.request.urlopen(req) as response:
+                      data = json.loads(response.read().decode('utf-8'))
+                      events = data.get('events') or []
+                      for index, ev in enumerate(events):
+                          is_home = 'Panathinaikos' in ev.get('strHomeTeam', '')
+                          opponent = ev.get('strAwayTeam') if is_home else ev.get('strHomeTeam')
+                          
+                          date_str = ev.get('dateEvent', '')
+                          time_str = ev.get('strTime', '18:00:00')
+                          
+                          if time_str and len(time_str) == 5:
+                              time_str += ':00'
+                          
+                          iso_date = f'{date_str}T{time_str}Z' if date_str else datetime.datetime.utcnow().isoformat() + 'Z'
+
+                          matches.append({
+                              'id': f'{team_code.lower()}-{ev.get(\"idEvent\", index)}',
+                              'team': team_code,
+                              'opponent': opponent or 'TBD',
+                              'competition': ev.get('strLeague', 'Official Match'),
+                              'isFriendly': 'Friendly' in ev.get('strLeague', ''),
+                              'home': is_home,
+                              'isoDate': iso_date,
+                              'tv': default_tv,
+                              'score': f\"{ev.get('intHomeScore', '')} - {ev.get('intAwayScore', '')}\" if ev.get('intHomeScore') is not None else ''
+                          })
+              except Exception as e:
+                  print(f'Error fetching {team_code} data:', e)
+
+          # Fetch live games for FC & BC
+          fetch_events(url_fc, 'FC', 'Cosmote Sport 1 HD')
+          fetch_events(url_bc, 'BC', 'NovaSports Prime')
+
+          # If live API returns empty results during off-season break, fallback to default structure
+          if not matches:
+              print('API returned no upcoming games, keeping base schedule.')
+          else:
+              with open('matches.json', 'w', encoding='utf-8') as f:
+                  json.dump(matches, f, ensure_ascii=False, indent=2)
+              print(f'Successfully wrote {len(matches)} live matches to matches.json!')
           "
 
-      - name: Commit and Push Changes
+      - name: Commit and Push Updated Schedule
         run: |
           git config --global user.name "PAO Zone Bot"
           git config --global user.email "bot@paozone.gr"
