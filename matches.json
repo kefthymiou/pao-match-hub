@@ -11,14 +11,14 @@
     "score": ""
   },
   {
-    "id": "bc-2565478",
+    "id": "bc-2606139",
     "team": "BC",
-    "opponent": "Fenerbahçe Basketbol",
-    "competition": "EuroLeague Basketball",
+    "opponent": "Promitheas Patras BC",
+    "competition": "Greek Basket League",
     "isFriendly": false,
-    "home": true,
-    "isoDate": "2026-10-08T18:15:00Z",
+    "home": false,
+    "isoDate": "2026-10-10T16:00:00Z",
     "tv": "NovaSports Prime",
-    "score": "92 - 74"
+    "score": ""
   }
 ]
