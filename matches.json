@@ -189,7 +189,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2026-10-15T16:45:00Z",
-    "tv": "Paramount+",
+    "tv": "",
     "venue": "Athens Olympic Stadium",
     "score": "",
     "source": "espn-uefa.europa.conf"
@@ -241,7 +241,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2026-10-22T14:30:00Z",
-    "tv": "Paramount+",
+    "tv": "",
     "venue": "Almaty Ortalyk Stadium",
     "score": "",
     "source": "espn-uefa.europa.conf"
@@ -358,7 +358,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2026-11-05T20:00:00Z",
-    "tv": "Paramount+",
+    "tv": "",
     "venue": "Athens Olympic Stadium",
     "score": "",
     "source": "espn-uefa.europa.conf"
@@ -488,7 +488,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2026-11-26T20:00:00Z",
-    "tv": "Paramount+",
+    "tv": "",
     "venue": "Right to Dream Park",
     "score": "",
     "source": "espn-uefa.europa.conf"
@@ -553,7 +553,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2026-12-10T17:45:00Z",
-    "tv": "Paramount+",
+    "tv": "",
     "venue": "Europa-Park Stadion",
     "score": "",
     "source": "espn-uefa.europa.conf"
@@ -618,7 +618,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2026-12-17T20:00:00Z",
-    "tv": "Paramount+",
+    "tv": "",
     "venue": "Athens Olympic Stadium",
     "score": "",
     "source": "espn-uefa.europa.conf"
