@@ -152,7 +152,7 @@
     "isoDate": "2026-10-10T16:00:00Z",
     "tv": "SPORT FM TV 2",
     "venue": "ΠΕΑΚ ΠΑΤΡΑΣ \"ΔΗΜ. ΤΟΦΑΛΟΣ\"",
-    "score": "",
+    "score": "59 - 84",
     "source": "gbl"
   },
   {
@@ -214,7 +214,7 @@
     "competition": "Greek Basket League · Round 3",
     "isFriendly": false,
     "home": true,
-    "isoDate": "2026-10-18T13:00:00Z",
+    "isoDate": "2026-10-18T10:00:00Z",
     "tv": "ΣΚΑΪ",
     "venue": "TELEKOM CEN. A.",
     "score": "",
@@ -318,7 +318,7 @@
     "competition": "Greek Basket League · Round 5",
     "isFriendly": false,
     "home": false,
-    "isoDate": "2026-11-01T15:30:00Z",
+    "isoDate": "2026-11-01T15:15:00Z",
     "tv": "ΣΚΑΪ",
     "venue": "ΑΛΕΞΑΝΔΡΕΙΟ",
     "score": "",
@@ -637,19 +637,6 @@
     "source": "euroleague"
   },
   {
-    "id": "bc-gbl-03F94621",
-    "team": "BC",
-    "opponent": "Doxa Lefkadas",
-    "competition": "Greek Basket League · Round 11",
-    "isFriendly": false,
-    "home": false,
-    "isoDate": "2026-12-20T14:00:00Z",
-    "tv": "SPORT FM TV",
-    "venue": "Ν.Κ.Γ. \"ΓΙΑΝΝΗΣ ΜΠΟΥΡΟΥΣΗΣ\"",
-    "score": "",
-    "source": "gbl"
-  },
-  {
     "id": "fc-espn-401896801",
     "team": "FC",
     "opponent": "Iraklis",
@@ -661,6 +648,19 @@
     "venue": "Athens Olympic Stadium",
     "score": "",
     "source": "espn-gre.1"
+  },
+  {
+    "id": "bc-gbl-03F94621",
+    "team": "BC",
+    "opponent": "Doxa Lefkadas",
+    "competition": "Greek Basket League · Round 11",
+    "isFriendly": false,
+    "home": true,
+    "isoDate": "2026-12-20T18:00:00Z",
+    "tv": "SPORT FM TV",
+    "venue": "TELEKOM CENTER ATHENS",
+    "score": "",
+    "source": "gbl"
   },
   {
     "id": "bc-el-E2026_187",
@@ -932,10 +932,10 @@
     "opponent": "Doxa Lefkadas",
     "competition": "Greek Basket League · Round 18",
     "isFriendly": false,
-    "home": true,
+    "home": false,
     "isoDate": "2027-02-07T18:00:00Z",
     "tv": "",
-    "venue": "TELEKOM CENTER ATHENS",
+    "venue": "ΔΗΜΟΤΙΚΟ ΚΛΕΙΣΤΟ ΓΥΜΝΑΣΤΗΡΙΟ ΛΕΥΚΑΔΑΣ",
     "score": "",
     "source": "gbl",
     "timeTBC": true
