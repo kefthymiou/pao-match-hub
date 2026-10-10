@@ -24,7 +24,6 @@ import json
 import re
 import sys
 import urllib.request
-from html.parser import HTMLParser
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -38,7 +37,12 @@ SITE_URL = "https://www.paozone.gr/"
 ATHENS = ZoneInfo("Europe/Athens")
 UTC = dt.timezone.utc
 NOW = dt.datetime.now(UTC)
-HEADERS = {"User-Agent": "Mozilla/5.0 (PAO Zone fixture bot; +https://www.paozone.gr)"}
+# ESPN's CDN rejects bot-style User-Agents from cloud IPs (e.g. GitHub runners), so send a browser one.
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/130.0 Safari/537.36",
+    "Accept": "application/json, text/html;q=0.9, */*;q=0.8",
+}
 
 ESPN_TEAM_ID = "443"  # Panathinaikos on ESPN
 ESPN_LEAGUES = [
@@ -179,113 +183,96 @@ GR_MONTHS = {"ιαν": 1, "φεβ": 2, "μαρ": 3, "απρ": 4, "μαι": 5, "�
              "ιουλ": 7, "αυγ": 8, "σεπ": 9, "οκτ": 10, "νοε": 11, "δεκ": 12}
 DATE_RE = re.compile(r"^(?:Δευ|Τρι|Τετ|Πεμ|Πέμ|Παρ|Σαβ|Σάβ|Κυρ)\w*\.?\s+(\d{1,2})\s+([Α-Ωα-ωάέήίόύώϊϋΐΰ]+)\.?"
                      r"(?:\s*-\s*(\d{1,2}):(\d{2}))?", re.I)
-ROUND_RE = re.compile(r"^(\d{1,2})η\s+Αγωνιστική", re.I)
-SCORE_RE = re.compile(r"^(\d{2,3})\s*-\s*(\d{2,3})$")
 
 
 def _strip_accents(s):
     return s.translate(str.maketrans("άέήίόύώϊϋΐΰ", "αεηιουωιυιυ"))
 
 
-class _Tokens(HTMLParser):
-    """Flattens the page to an ordered list of ('text'|'img'|'a', value)."""
+# esake.gr writes sponsor names after the club and sometimes mixes Latin look-alike letters.
+_LATIN_TO_GREEK = str.maketrans("ABEHIKMNOPTXYZ", "ΑΒΕΗΙΚΜΝΟΡΤΧΥΖ")
+GBL_CLUBS = [  # (prefix of the normalised Greek name, display name)
+    ("ΠΑΝΑΘΗΝΑΙΚΟΣ", "Panathinaikos"), ("ΟΛΥΜΠΙΑΚΟΣ", "Olympiacos"), ("ΠΑΟΚ", "PAOK"),
+    ("ΑΕΚ", "AEK"), ("ΑΡΗΣ", "Aris"), ("ΠΡΟΜΗΘΕΑΣ", "Promitheas Patras"),
+    ("ΠΕΡΙΣΤΕΡΙ", "Peristeri"), ("ΚΑΡΔΙΤΣΑ", "Karditsa"), ("ΚΟΛΟΣΣΟΣ", "Kolossos Rhodes"),
+    ("ΜΑΡΟΥΣΙ", "Maroussi"), ("ΜΥΚΟΝΟΣ", "Mykonos"), ("ΗΡΑΚΛΗΣ", "Iraklis"),
+    ("ΔΟΞΑ", "Doxa Lefkadas"), ("ΛΑΥΡΙΟ", "Lavrio"), ("ΑΠΟΛΛΩΝ", "Apollon Patras"),
+    ("VIKOS", "Vikos Falcons"), ("ΒΙΚΟΣ", "Vikos Falcons"),
+]
 
-    def __init__(self):
-        super().__init__(convert_charrefs=True)
-        self.items, self._skip = [], 0
 
-    def handle_starttag(self, tag, attrs):
-        a = dict(attrs)
-        if tag in ("script", "style"):
-            self._skip += 1
-        elif tag == "img" and a.get("src"):
-            self.items.append(("img", a["src"]))
-        elif tag == "a" and a.get("href"):
-            self.items.append(("a", a["href"]))
+def gbl_club_name(raw):
+    raw = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", raw)).split())
+    key = _strip_accents(raw.upper()).translate(_LATIN_TO_GREEK)
+    for prefix, name in GBL_CLUBS:
+        if key.startswith(prefix.translate(_LATIN_TO_GREEK)):
+            return name
+    return raw.title()
 
-    def handle_endtag(self, tag):
-        if tag in ("script", "style") and self._skip:
-            self._skip -= 1
 
-    def handle_data(self, data):
-        t = " ".join(data.split())
-        if t and not self._skip:
-            self.items.append(("text", t))
+GAME_BLOCK = '<div class="esake-program-game">'
 
 
 def parse_esake(page, start_year):
-    p = _Tokens()
-    p.feed(page)
-    items = p.items
-    games, cur = [], None
-
-    def flush():
-        if cur and cur.get("date") and len(cur["teams"]) >= 2:
-            games.append(cur)
-
-    for kind, val in items:
-        if kind == "text" and ROUND_RE.match(val):
-            flush()
-            cur = {"round": int(ROUND_RE.match(val).group(1)), "date": None, "time": None,
-                   "texts": [], "teams": [], "names": [], "score": None, "idgame": None, "pending_name": False}
+    """Parse the 'games' tab of the Panathinaikos team page on esake.gr (one block per game)."""
+    games = []
+    for b in page.split(GAME_BLOCK)[1:]:
+        b = " ".join(b.split())
+        rm = re.search(r"<h5>\s*(\d{1,2})η\s+Αγωνιστική", b)
+        info = dict(re.findall(r"/skn/(clock|pointer|tv)\.svg[^>]*>([^<]*)", b))
+        cols = re.search(r'esake-program-game-final-score row equal">(.*?)</div>\s*</div>\s*</div>', b)
+        if not (rm and info.get("clock") and cols):
             continue
-        if cur is None:
+        dm = DATE_RE.match(html.unescape(info["clock"]).strip())
+        if not dm:
             continue
-        if kind == "a":
-            m = re.search(r"idgame=([A-Za-z0-9]+)", val)
-            if m and not cur["idgame"]:
-                cur["idgame"] = m.group(1)
-        elif kind == "img":
-            m = re.search(r"esaketeam/([0-9A-Fa-f]{8})/", val)
-            if m and len(cur["teams"]) < 2:
-                cur["teams"].append(m.group(1).upper())
-                cur["pending_name"] = True
-        elif kind == "text":
-            dm = DATE_RE.match(val)
-            if dm and not cur["date"]:
-                mon = GR_MONTHS.get(_strip_accents(dm.group(2).lower())[:4]) or \
-                      GR_MONTHS.get(_strip_accents(dm.group(2).lower())[:3])
-                if mon:
-                    cur["date"] = (int(dm.group(1)), mon)
-                    if dm.group(3):
-                        cur["time"] = (int(dm.group(3)), int(dm.group(4)))
-                continue
-            sm = SCORE_RE.match(val)
-            if sm and cur["score"] is None and cur["teams"]:
-                cur["score"] = f"{sm.group(1)} - {sm.group(2)}"
-                continue
-            if cur["pending_name"] and len(val) > 2 and not val.isdigit() and val != "-":
-                cur["names"].append(val)
-                cur["pending_name"] = False
-                continue
-            if cur["date"] and not cur["teams"]:
-                cur["texts"].append(val)  # venue / broadcaster lines
-    flush()
+        month_key = _strip_accents(dm.group(2).lower())
+        mon = GR_MONTHS.get(month_key[:4]) or GR_MONTHS.get(month_key[:3])
+        if not mon:
+            continue
+        # three columns: home (name + logo), score, away (logo + name)
+        teams = re.findall(r"esaketeam/([0-9A-Fa-f]{8})/", cols.group(1))
+        spans = re.findall(r"<span>(.*?)</span>", cols.group(1))
+        if len(teams) < 2 or len(spans) < 3:
+            continue
+        score_txt = html.unescape(re.sub(r"<[^>]+>", "", spans[1])).replace("\xa0", " ")
+        sm = re.search(r"(\d{2,3})\s*-\s*(\d{2,3})", score_txt)
+        idg = re.search(r"idgame=([A-Za-z0-9]+)", b)
+        year = start_year if mon >= 7 else start_year + 1
+        hh, mm = (int(dm.group(3)), int(dm.group(4))) if dm.group(3) else (20, 0)
+        games.append({
+            "round": int(rm.group(1)),
+            "when": dt.datetime(year, mon, int(dm.group(1)), hh, mm, tzinfo=ATHENS),
+            "tbc": not dm.group(3),
+            "home_id": teams[0].upper(), "away_id": teams[1].upper(),
+            "home": gbl_club_name(spans[0]), "away": gbl_club_name(spans[2]),
+            "score": f"{sm.group(1)} - {sm.group(2)}" if sm else "",
+            "venue": html.unescape(info.get("pointer", "")).split(" - ")[0].strip(),
+            "tv": html.unescape(info.get("tv", "")).strip(),
+            "idgame": idg.group(1) if idg else None,
+        })
+
+    # The page also lists the Super Cup as a second "Round 1": a repeated round number on an
+    # earlier date than the league game with that number is the Super Cup.
+    latest = {}
+    for g in games:
+        latest[g["round"]] = max(latest.get(g["round"], g["when"]), g["when"])
 
     out, seen = [], set()
-    for g in games:
-        day, mon = g["date"]
-        year = start_year if mon >= 7 else start_year + 1
-        hh, mm = g["time"] or (20, 0)
-        when = dt.datetime(year, mon, day, hh, mm, tzinfo=ATHENS)
-        pao_home = g["teams"][0] == ESAKE_TEAM_ID
-        if not pao_home and g["teams"][1] != ESAKE_TEAM_ID:
+    for g in sorted(games, key=lambda x: x["when"]):
+        pao_home = g["home_id"] == ESAKE_TEAM_ID
+        if not pao_home and g["away_id"] != ESAKE_TEAM_ID:
             continue
-        names = g["names"] + ["", ""]
-        opponent = (names[1] if pao_home else names[0]).title()
-        key = g["idgame"] or f"{when.date()}-{opponent}"
+        key = g["idgame"] or f"{g['when'].date()}-{g['round']}"
         if key in seen:
             continue
         seen.add(key)
-        texts = [t for t in g["texts"] if t not in ("Στατιστικά", "Play by Play")]
-        venue = texts[0].split(" - ")[0] if texts else ""
-        tv = texts[1] if len(texts) > 1 else ""
-        score = g["score"] if when < NOW else ""
+        comp = ("Greek Super Cup" if g["when"] < latest[g["round"]]
+                else f"Greek Basket League · Round {g['round']}")
         out.append(make_match(
-            mid=f"bc-gbl-{key}", team="BC", opponent=opponent,
-            competition=f"Greek Basket League · Round {g['round']}", home=pao_home,
-            when=when.astimezone(UTC), score=score, tv=tv, venue=venue, source="gbl",
-            time_tbc=g["time"] is None,
+            mid=f"bc-gbl-{key}", team="BC", opponent=g["away"] if pao_home else g["home"],
+            competition=comp, home=pao_home, when=g["when"].astimezone(UTC),
+            score=g["score"], tv=g["tv"], venue=g["venue"], source="gbl", time_tbc=g["tbc"],
         ))
     return out
 
