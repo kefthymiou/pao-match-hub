@@ -1,0 +1,12 @@
+200 167982 https://site.api.espn.com/apis/site/v2/sports/soccer/gre.1/teams/443/schedule?fixture=true
+200 167982 https://site.web.api.espn.com/apis/site/v2/sports/soccer/gre.1/teams/443/schedule?fixture=true
+200 2899 https://sports.core.api.espn.com/v2/sports/soccer/leagues/gre.1/seasons/2026/teams/443/events?limit=100
+400 80 https://site.api.espn.com/apis/site/v2/sports/soccer/gre.1/scoreboard?dates=20261001-20261231&limit=500
+200 9964293 https://match.uefa.com/v5/matches?competitionId=2019&seasonYear=2027&limit=300&offset=0&order=ASC
+403 48 https://api.sofascore.com/api/v1/search/teams?q=panathinaikos
+403 48 https://www.sofascore.com/api/v1/search/teams?q=panathinaikos
+404 216904 https://www.fotmob.com/api/teams?id=10239
+200 7069 https://www.thesportsdb.com/api/v1/json/3/eventsround.php?id=4336&r=7&s=2026-2027
+403 5630 https://www.slgr.gr/el/schedule/
+404 53 https://prod-public-api.livescore.com/v1/api/app/search/soccer/panathinaikos/3?locale=en
+200 123124 https://api.openligadb.de/getavailableleagues
