@@ -1265,7 +1265,7 @@
       <p>Το PAO Zone δείχνει τον επόμενο αγώνα του Παναθηναϊκού σε ποδόσφαιρο και μπάσκετ, με αντίστροφη μέτρηση, ώρα έναρξης στην ώρα σας και κανάλι μετάδοσης όπου είναι γνωστό.</p>
       <h3>Ποιες διοργανώσεις καλύπτει το πρόγραμμα;</h3>
       <p>Ποδόσφαιρο: Super League και UEFA Conference League. Μπάσκετ: EuroLeague και Stoiximan GBL (Basket League).</p>
-      <p class="disclaimer">Το PAO Zone είναι ανεπίσημη σελίδα φιλάθλων και δεν συνδέεται με την ΠΑΕ ή την ΚΑΕ Παναθηναϊκός. Ώρες και κανάλια μπορεί να αλλάξουν – επιβεβαιώστε πριν τον αγώνα.</p>
+      <p class="disclaimer">Το PAO Zone είναι ανεπίσημη σελίδα φιλάθλων και δεν συνδέεται με την ΠΑΕ ή την ΚΑΕ Παναθηναϊκός. Ώρες και κανάλια μπορεί να αλλάξουν – επιβεβαιώστε πριν τον αγώνα. Μετράμε επισκέψεις ανώνυμα με το GoatCounter, χωρίς cookies.</p>
     </footer>
   </main>
 
@@ -1483,25 +1483,38 @@
       });
     }
 
+    // GoatCounter events (cookieless): which filters visitors use
+    function track(group, value) {
+      try {
+        if (window.goatcounter && window.goatcounter.count) {
+          window.goatcounter.count({ path: `filter-${group}-${value}`, title: `Filter: ${group} = ${value}`, event: true });
+        }
+      } catch (e) { /* analytics must never break the page */ }
+    }
+
     function setCompFilter(comp) {
       currentComp = comp;
+      track('competition', comp);
       renderMatches();
     }
 
     function setTeamFilter(team, el) {
       currentTeam = team;
+      track('team', team);
       updateActiveBtn(el);
       renderMatches();
     }
 
     function setTypeFilter(type, el) {
       currentType = type;
+      track('type', type);
       updateActiveBtn(el);
       renderMatches();
     }
 
     function setStatusFilter(status, el) {
       currentStatus = status;
+      track('status', status);
       document.getElementById('gridTitle').innerText = status === 'UPCOMING' ? 'UPCOMING FIXTURES (SOONEST FIRST)' : 'PAST MATCH RESULTS';
       updateActiveBtn(el);
       renderMatches();
@@ -1521,5 +1534,7 @@
     // Load matches from matches.json (refreshed by the GitHub Action)
     loadMatches();
   </script>
+  <!-- Analytics: GoatCounter (no cookies, no personal data) – dashboard: https://paozone.goatcounter.com -->
+  <script data-goatcounter="https://paozone.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
