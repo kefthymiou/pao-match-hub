@@ -136,8 +136,7 @@ def fetch_espn(slug, label):
         if state in ("post", "in") and hs is not None and as_ is not None:
             score = f"{hs} - {as_}"
         venue = (comp.get("venue") or {}).get("fullName", "")
-        tv = ", ".join(b.get("media", {}).get("shortName", "") for b in comp.get("broadcasts") or []
-                       if b.get("media", {}).get("shortName"))
+        tv = ""  # ESPN lists US broadcasters only; Greek TV comes from tv-overrides.json
         out.append(make_match(
             mid=f"fc-espn-{ev['id']}", team="FC",
             opponent=away_name if pao_home else home_name,
