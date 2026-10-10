@@ -9,18 +9,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Dump raw feed responses
+      - name: Probe football sources
         run: |
-          mkdir -p debug
-          UA='Mozilla/5.0 (PAO Zone fixture bot; +https://www.paozone.gr)'
-          for u in \
-            "espn1|https://site.api.espn.com/apis/site/v2/sports/soccer/gre.1/teams/443/schedule" \
-            "espn2|https://site.api.espn.com/apis/site/v2/sports/soccer/gre.1/teams/443/schedule?fixture=true" \
-            "espn3|https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams/443/schedule?fixture=true" \
-            "esake|https://www.esake.gr/el/action/EsaketeamView?idteam=00000001&mode=3"; do
-            n="${u%%|*}"; url="${u#*|}"
-            curl -sS -A "$UA" -o "debug/$n.body" -w "%{http_code} %{size_download}\n" "$url" > "debug/$n.status" 2>&1 || true
-          done
-          python3 scripts/update_matches.py > debug/run.log 2>&1 || true
+          mkdir -p debug2
+          BUA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36'
+          probe() { n="$1"; url="$2"; shift 2
+            curl -sS -L --max-time 30 -A "$BUA" -H 'Accept: application/json, text/html' "$@" -o "debug2/$n.body" -w "%{http_code} %{size_download} $url\n" "$url" >> debug2/status.txt 2>&1 || echo "ERR $n" >> debug2/status.txt; }
+          probe espn_bua    "https://site.api.espn.com/apis/site/v2/sports/soccer/gre.1/teams/443/schedule?fixture=true"
+          probe espn_web    "https://site.web.api.espn.com/apis/site/v2/sports/soccer/gre.1/teams/443/schedule?fixture=true"
+          probe espn_core   "https://sports.core.api.espn.com/v2/sports/soccer/leagues/gre.1/seasons/2026/teams/443/events?limit=100"
+          probe espn_sb     "https://site.api.espn.com/apis/site/v2/sports/soccer/gre.1/scoreboard?dates=20261001-20261231&limit=500"
+          probe uefa        "https://match.uefa.com/v5/matches?competitionId=2019&seasonYear=2027&limit=300&offset=0&order=ASC"
+          probe sofa_search "https://api.sofascore.com/api/v1/search/teams?q=panathinaikos"
+          probe sofa_www    "https://www.sofascore.com/api/v1/search/teams?q=panathinaikos"
+          probe fotmob      "https://www.fotmob.com/api/teams?id=10239"
+          probe tsdb_round  "https://www.thesportsdb.com/api/v1/json/3/eventsround.php?id=4336&r=7&s=2026-2027"
+          probe slgr        "https://www.slgr.gr/el/schedule/"
+          probe livescore   "https://prod-public-api.livescore.com/v1/api/app/search/soccer/panathinaikos/3?locale=en"
+          probe footapi_os  "https://api.openligadb.de/getavailableleagues"
           git config user.name "PAO Zone Bot"; git config user.email "bot@paozone.gr"
-          git add -f debug && git commit -m "debug dump [skip ci]" && git push
+          git add -f debug2 && git commit -m "debug dump 2 [skip ci]" && git push

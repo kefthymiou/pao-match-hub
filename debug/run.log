@@ -1,9 +1,0 @@
-  ESPN gre.1 443/schedule: HTTP Error 403: Forbidden
-  ESPN gre.1 fixture=true: HTTP Error 403: Forbidden
-  espn-gre.1: no data – keeping 0 from last run
-  ESPN uefa.europa.conf 443/schedule: HTTP Error 403: Forbidden
-  ESPN uefa.europa.conf fixture=true: HTTP Error 403: Forbidden
-  espn-uefa.europa.conf: no data – keeping 0 from last run
-  euroleague: 38 matches
-  gbl: 27 matches
-Wrote 65 matches.
