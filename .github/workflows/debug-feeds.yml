@@ -1,0 +1,26 @@
+name: Debug feeds (temporary)
+on:
+  push:
+    branches: [debug-feeds]
+permissions:
+  contents: write
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Dump raw feed responses
+        run: |
+          mkdir -p debug
+          UA='Mozilla/5.0 (PAO Zone fixture bot; +https://www.paozone.gr)'
+          for u in \
+            "espn1|https://site.api.espn.com/apis/site/v2/sports/soccer/gre.1/teams/443/schedule" \
+            "espn2|https://site.api.espn.com/apis/site/v2/sports/soccer/gre.1/teams/443/schedule?fixture=true" \
+            "espn3|https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams/443/schedule?fixture=true" \
+            "esake|https://www.esake.gr/el/action/EsaketeamView?idteam=00000001&mode=3"; do
+            n="${u%%|*}"; url="${u#*|}"
+            curl -sS -A "$UA" -o "debug/$n.body" -w "%{http_code} %{size_download}\n" "$url" > "debug/$n.status" 2>&1 || true
+          done
+          python3 scripts/update_matches.py > debug/run.log 2>&1 || true
+          git config user.name "PAO Zone Bot"; git config user.email "bot@paozone.gr"
+          git add -f debug && git commit -m "debug dump [skip ci]" && git push
