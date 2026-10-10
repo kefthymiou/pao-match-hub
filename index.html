@@ -135,6 +135,11 @@
     }
 
     .pao-mark { display: inline-block; vertical-align: middle; flex-shrink: 0; }
+    .opp-badge {
+      display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+      border-radius: 50%; background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18); color: var(--text-muted); font-weight: 800;
+    }
 
     .intro { margin: 26px 0 0; }
     .intro h1 { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; line-height: 1.2; }
@@ -479,6 +484,18 @@
       <symbol id="pzLeaf" viewBox="10 6 44 52">
         <use href="#pzLeaves" fill="#22c55e"/>
       </symbol>
+      <g id="pzBall">
+        <circle cx="45" cy="46" r="14.7" fill="#080f0b"/>
+        <circle cx="45" cy="46" r="12.5" fill="#f97316"/>
+        <g fill="none" stroke="#3b1a06" stroke-width="1.6" stroke-linecap="round">
+          <path d="M32.5 46 H57.5 M45 33.5 V58.5"/>
+          <path d="M36.2 37.2 Q42.5 46 36.2 54.8 M53.8 37.2 Q47.5 46 53.8 54.8"/>
+        </g>
+      </g>
+      <symbol id="pzLeafBC" viewBox="8 6 53 55">
+        <use href="#pzLeaves" fill="#22c55e"/>
+        <use href="#pzBall"/>
+      </symbol>
     </defs>
   </svg>
 
@@ -492,8 +509,8 @@
       <div class="controls" id="controlsBar">
         <div class="btn-group">
           <button class="filter-btn active" onclick="setTeamFilter('ALL', this)">ALL</button>
-          <button class="filter-btn" onclick="setTeamFilter('BC', this)">🏀 PAO BC</button>
-          <button class="filter-btn" onclick="setTeamFilter('FC', this)">⚽ PAO FC</button>
+          <button class="filter-btn" onclick="setTeamFilter('BC', this)"><svg class="pao-mark" width="16" height="16" viewBox="8 6 53 55" aria-hidden="true"><use href="#pzLeafBC"/></svg> PAO BC</button>
+          <button class="filter-btn" onclick="setTeamFilter('FC', this)"><svg class="pao-mark" width="16" height="16" viewBox="10 6 44 52" aria-hidden="true"><use href="#pzLeaf"/></svg> PAO FC</button>
         </div>
 
         <div class="btn-group">
@@ -554,8 +571,17 @@
   <script>
     let matchesData = [];
 
-    const MARK = '<svg class="pao-mark" width="22" height="22" viewBox="10 6 44 52" aria-hidden="true"><use href="#pzLeaf"/></svg>';
-    const MARK_BIG = '<svg class="pao-mark" width="40" height="40" viewBox="10 6 44 52" aria-hidden="true"><use href="#pzLeaf"/></svg>';
+    // PAO FC = shamrock, PAO BC = shamrock + basketball
+    function paoMark(team, size) {
+      const bc = team === 'BC';
+      return `<svg class="pao-mark" width="${size}" height="${size}" viewBox="${bc ? '8 6 53 55' : '10 6 44 52'}" role="img" aria-label="${bc ? 'PAO BC' : 'PAO FC'}"><use href="#${bc ? 'pzLeafBC' : 'pzLeaf'}"/></svg>`;
+    }
+
+    // Neutral badge with the opponent's initial
+    function oppBadge(name, size) {
+      const letter = esc(String(name || '?').trim().charAt(0).toUpperCase() || '?');
+      return `<span class="opp-badge" style="width:${size}px;height:${size}px;font-size:${Math.round(size * 0.45)}px" aria-hidden="true">${letter}</span>`;
+    }
 
     function esc(v) {
       return String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -619,11 +645,10 @@
       const paoName = featured.team === 'BC' ? 'Panathinaikos BC' : 'Panathinaikos FC';
       const homeName = featured.home ? paoName : featured.opponent;
       const awayName = featured.home ? featured.opponent : paoName;
-      const sportIcon = featured.team === 'BC' ? '🏀' : '⚽';
 
       heroContainer.innerHTML = `
         <div class="hero-team">
-          <div class="hero-badge-wrap">${featured.home ? MARK_BIG : sportIcon}</div>
+          <div class="hero-badge-wrap">${featured.home ? paoMark(featured.team, 44) : oppBadge(featured.opponent, 44)}</div>
           <div class="hero-team-name">${esc(homeName)}</div>
         </div>
 
@@ -644,7 +669,7 @@
         </div>
 
         <div class="hero-team">
-          <div class="hero-badge-wrap">${!featured.home ? MARK_BIG : sportIcon}</div>
+          <div class="hero-badge-wrap">${!featured.home ? paoMark(featured.team, 44) : oppBadge(featured.opponent, 44)}</div>
           <div class="hero-team-name">${esc(awayName)}</div>
         </div>
       `;
@@ -720,9 +745,8 @@
         const paoTitle = m.team === 'BC' ? 'Panathinaikos BC' : 'Panathinaikos FC';
         const homeTeam = m.home ? paoTitle : m.opponent;
         const awayTeam = m.home ? m.opponent : paoTitle;
-        const sportIcon = `<span class="card-shamrock-icon">${m.team === 'BC' ? '🏀' : '⚽'}</span>`;
-        const homeIcon = m.home ? MARK : sportIcon;
-        const awayIcon = !m.home ? MARK : sportIcon;
+        const homeIcon = m.home ? paoMark(m.team, 24) : oppBadge(m.opponent, 24);
+        const awayIcon = !m.home ? paoMark(m.team, 24) : oppBadge(m.opponent, 24);
         const sc = scoreParts(m.score);
 
         card.innerHTML = `
