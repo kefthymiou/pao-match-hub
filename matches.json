@@ -72,7 +72,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2026-09-24T18:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "91 - 72",
     "source": "euroleague"
@@ -98,7 +98,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2026-09-30T18:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "102 - 79",
     "source": "euroleague"
@@ -111,7 +111,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2026-10-02T18:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "90 - 67",
     "source": "euroleague"
@@ -137,7 +137,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2026-10-08T18:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "92 - 74",
     "source": "euroleague"
@@ -176,7 +176,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2026-10-13T18:30:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Belgrade Arena",
     "score": "55 - 72",
     "source": "euroleague"
@@ -202,7 +202,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2026-10-16T18:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "81 - 91",
     "source": "euroleague"
@@ -254,7 +254,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2026-10-22T18:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "85 - 79",
     "source": "euroleague"
@@ -293,7 +293,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2026-10-27T19:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "",
     "source": "euroleague"
@@ -306,7 +306,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2026-10-30T17:30:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Turkcell Basketball Development Center",
     "score": "",
     "source": "euroleague"
@@ -345,7 +345,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2026-11-04T19:45:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Movistar Arena",
     "score": "",
     "source": "euroleague"
@@ -397,7 +397,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2026-11-13T19:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "",
     "source": "euroleague"
@@ -423,7 +423,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2026-11-17T20:00:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Paladozza",
     "score": "",
     "source": "euroleague"
@@ -436,7 +436,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2026-11-19T18:00:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Zalgirio Arena",
     "score": "",
     "source": "euroleague"
@@ -475,7 +475,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2026-11-24T19:30:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Roig Arena",
     "score": "",
     "source": "euroleague"
@@ -514,7 +514,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2026-12-04T17:00:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Turkcell Basketball Development Center",
     "score": "",
     "source": "euroleague"
@@ -566,7 +566,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2026-12-11T19:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "",
     "source": "euroleague"
@@ -605,7 +605,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2026-12-16T19:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "",
     "source": "euroleague"
@@ -631,7 +631,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2026-12-18T19:00:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Sap Garden",
     "score": "",
     "source": "euroleague"
@@ -670,7 +670,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2026-12-23T16:00:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Coca-Cola Arena",
     "score": "",
     "source": "euroleague"
@@ -696,7 +696,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2026-12-29T17:45:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Ulker Sports And Event Hall",
     "score": "",
     "source": "euroleague"
@@ -722,7 +722,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2027-01-07T17:00:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Aleksandar Nikolic Hall",
     "score": "",
     "source": "euroleague"
@@ -762,7 +762,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2027-01-12T19:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "",
     "source": "euroleague"
@@ -775,7 +775,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2027-01-14T19:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "",
     "source": "euroleague"
@@ -815,7 +815,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2027-01-21T17:00:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Arena 8888 Sofia",
     "score": "",
     "source": "euroleague"
@@ -855,7 +855,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2027-01-29T19:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "",
     "source": "euroleague"
@@ -895,7 +895,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2027-02-02T19:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "",
     "source": "euroleague"
@@ -908,7 +908,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2027-02-05T19:30:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Unipol Forum",
     "score": "",
     "source": "euroleague"
@@ -948,7 +948,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2027-02-12T19:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Peace And Friendship Stadium",
     "score": "",
     "source": "euroleague"
@@ -1014,7 +1014,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2027-03-04T19:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "",
     "source": "euroleague"
@@ -1054,7 +1054,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2027-03-09T19:30:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Buesa Arena",
     "score": "",
     "source": "euroleague"
@@ -1067,7 +1067,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2027-03-11T19:45:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Adidas Arena",
     "score": "",
     "source": "euroleague"
@@ -1107,7 +1107,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2027-03-18T19:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "",
     "source": "euroleague"
@@ -1147,7 +1147,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2027-03-23T19:00:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Ldlc Arena",
     "score": "",
     "source": "euroleague"
@@ -1160,7 +1160,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2027-03-25T19:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "",
     "source": "euroleague"
@@ -1187,7 +1187,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2027-04-02T18:30:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Palau Blaugrana",
     "score": "",
     "source": "euroleague"
@@ -1214,7 +1214,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2027-04-06T18:30:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Belgrade Arena",
     "score": "",
     "source": "euroleague"
@@ -1227,7 +1227,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2027-04-08T18:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "",
     "source": "euroleague"
@@ -1254,7 +1254,7 @@
     "isFriendly": false,
     "home": true,
     "isoDate": "2027-04-15T18:15:00Z",
-    "tv": "",
+    "tv": "EUROLEAGUE.TV",
     "venue": "Telekom Center Athens",
     "score": "",
     "source": "euroleague"
