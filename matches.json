@@ -308,7 +308,7 @@
     "isoDate": "2026-10-30T17:30:00Z",
     "tv": "EUROLEAGUE.TV",
     "venue": "Turkcell Basketball Development Center",
-    "score": "",
+    "score": "25 - 21",
     "source": "euroleague"
   },
   {
@@ -319,7 +319,7 @@
     "isFriendly": false,
     "home": false,
     "isoDate": "2026-11-01T15:00:00Z",
-    "tv": "ΣΚΑΪ",
+    "tv": "ΣΚΑΪ / SPORT FM TV 2",
     "venue": "ΑΛΕΞΑΝΔΡΕΙΟ",
     "score": "",
     "source": "gbl"
